@@ -129,8 +129,43 @@ In this exercise, we will interact with a SIEM to monitor the different events o
 
 Next, we want to learn more about the suspicious activity or event. The suspicious event might have been triggered by an event, such as a local user, a local computer, or a remote IP address. To send and receive postal mail, you need a physical address; similarly, you need an IP address to send and receive data over the Internet. An IP address is a logical address that allows you to communicate over the Internet. We inspect the cause of the trigger to confirm whether the event is indeed malicious. If it is malicious, we need to take due action, such as reporting to someone else in the SOC and blocking the IP address.
 
+### Step 1: Instructions
+
+Inspect the alerts in your SIEM dashboard. Find the malicious IP address from the alerts, make a note of it, and then click on the alert to proceed.
+
+### Step 1: Solution
+
+Click on "Unauthorized connection attempt... `143.110.250.149` to port `22`".
+
+### Step 2: Instructions
+
+There are websites on the Internet that allow you to check the reputation of an IP address to see whether it's malicious or suspicious.
+
+### Step 2: Solution
+
+Enter the IP `143.110.250.149` and press `Submit`.
+
+### Step 3: Instructions
+
+There are many open-source databases out there, like AbuseIPDB, and Cisco Talos Intelligence, where you can perform a reputation and location check for the IP address. Most security analysts use these tools to aid them with alert investigations. You can also make the Internet safer by reporting the malicious IPs, for example, on AbuseIPDB.
+
+Now that we know the IP address is malicious, we need to escalate it to a staff member!
+
+### Step 3: Solution
+
+Click "Next".
+
+### Step 4: Instructions
+
+We shouldn't worry too much if it was a failed authentication attempt, but you probably noticed the successful authentication attempt from the malicious IP address. Let's declare a small incident event and escalate it. There is some great staff working at the company, but you wouldn't want to escalate this to the wrong person who is not in charge of your team or department.
+
+### Step 4: Solution
+
+Choose "SoC Team Lead" Will Griffin.
+At the bottom, enter the IP `143.110.250.149` and click "Block IP Address".
+
 ***Answer the questions below***
 
 1. What is the flag that you obtained by following along?
 
-    ***Correct answer:***
+    ***Correct answer: THM{THREAT-BLOCKED}***
