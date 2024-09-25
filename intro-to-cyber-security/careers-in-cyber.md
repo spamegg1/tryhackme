@@ -20,6 +20,28 @@ Let's start exploring the different roles in cyber security!
 
 ## Task 2: Security Analyst
 
+Security analysts are integral to constructing security measures across organisations to protect the company from attacks. Analysts explore and evaluate company networks to uncover actionable data and recommendations for engineers to develop preventative measures. This job role requires working with various stakeholders to gain an understanding of security requirements and the security landscape.
+
+### Responsibilities
+
+- Working with various stakeholders to analyse the cyber security throughout the company
+- Compile ongoing reports about the safety of networks, documenting security issues and measures taken in response
+- Develop security plans, incorporating research on new attack tools and trends, and measures needed across teams to maintain data security.
+
+### Learning Paths
+
+TryHackMe's learning paths will give you both the fundamental technical knowledge and hands-on experience, which is crucial to becoming a successful Security Analyst.
+
+- Introduction to Cyber Security
+- Pre Security
+- SOC Level 1
+
+***Answer the questions below***
+
+Read about what a security analyst does.
+
+***Correct answer: No answer needed***
+
 ## Task 3: Security Engineer
 
 ## Task 4: Incident Responder
