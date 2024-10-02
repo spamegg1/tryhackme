@@ -168,3 +168,11 @@ Read about what a red teamer does.
 ***Correct answer: No answer needed***
 
 ## Task 9: Quiz
+
+This room has provided you with a general overview of the different careers in cyber security. Don't forget that you can [leverage online training to land your dream job](https://tryhackme.com/resources/blog/online-training-for-careers) in cyber security. To find out which cyber security role suits you best, try our fun quiz, which you can access by clicking the "View Site" button on the right.
+
+***Answer the questions below***
+
+Complete the careers quiz and share your chosen job!
+
+***Correct answer: No answer needed***
