@@ -7,14 +7,19 @@
 ### Intro to Offensive Security
 
 - [Link to site](https://tryhackme.com/r/room/introtooffensivesecurity)
-- [Solution](intro-to-cyber-security/intro-to-offensive-security.md)
+- [Solution](01-intro-to-cyber-security/01-intro-to-offensive-security.md)
 
 ### Intro to Defensive Security
 
 - [Link to site](https://tryhackme.com/r/room/introtooffensivesecurity)
-- [Solution](intro-to-cyber-security/intro-to-defensive-security.md)
+- [Solution](01-intro-to-cyber-security/02-intro-to-defensive-security.md)
 
 ### Careers in Cyber
 
 - [Link to site](https://tryhackme.com/r/room/careersincyber)
-- [Solution](intro-to-cyber-security/careers-in-cyber.md)
+- [Solution](01-intro-to-cyber-security/03-careers-in-cyber.md)
+
+## What is Networking?
+
+- [Link to site](https://tryhackme.com/r/room/whatisnetworking)
+- [Solution](02-what-is-networking/01-what-is-networking.md)
