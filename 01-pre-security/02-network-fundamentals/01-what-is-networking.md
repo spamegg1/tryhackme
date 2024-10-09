@@ -144,7 +144,9 @@ What does the term "MAC" stand for?
 
 Deploy the interactive lab using the "View Site" button and spoof your MAC address to access the site.  What is the flag?
 
-***Correct answer:***
+*Solution:* Copy Alice's MAC address, paste into Bob, then click "Request Site".
+
+***Correct answer: THM{YOU_GOT_ON_TRYHACKME}***
 
 ## Task 4: Ping (ICMP)
 
