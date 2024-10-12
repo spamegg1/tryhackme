@@ -174,7 +174,7 @@ What is the syntax to ping 10.10.10.10?
 
 What flag do you get when you ping 8.8.8.8?
 
-***Correct answer:***
+***Correct answer: THM{I_PINGED_THE_SERVER}***
 
 ## Task 5: Continue your learning: Intro to LAN
 
