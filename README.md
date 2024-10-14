@@ -27,3 +27,10 @@
 
 - [Link to site](https://tryhackme.com/r/room/whatisnetworking)
 - [Solution](01-pre-security/02-network-fundamentals/01-what-is-networking.md)
+
+### How the Web Works
+
+#### DNS in Detail
+
+- [Link to site](https://tryhackme.com/r/room/dnsindetail)
+- [Solution](01-pre-security/03-how-the-web-works/01-dns-in-detail.md)
