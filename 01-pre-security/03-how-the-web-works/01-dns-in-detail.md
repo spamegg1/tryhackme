@@ -80,10 +80,52 @@ What type of record would be used to advise where to send email?
 
 What type of record handles IPv6 addresses?
 
-***Correct answer:***
+***Correct answer: AAAA***
 
-## Task 4
+## Task 4: Making a DNS request
+
+![make-req](make-req.png)
+
+### What happens when you make a DNS request
+
+1. When you request a domain name, your computer first checks its local cache to see if you've previously looked up the address recently; if not, a request to your Recursive DNS Server will be made.
+2. A Recursive DNS Server is usually provided by your ISP, but you can also choose your own. This server also has a local cache of recently looked up domain names. If a result is found locally, this is sent back to your computer, and your request ends here (this is common for popular and heavily requested services such as Google, Facebook, Twitter). If the request cannot be found locally, a journey begins to find the correct answer, starting with the internet's root DNS servers.
+3. The root servers act as the DNS backbone of the internet; their job is to redirect you to the correct Top Level Domain Server, depending on your request. If, for example, you request <www.tryhackme.com>, the root server will recognise the Top Level Domain of .com and refer you to the correct TLD server that deals with .com addresses.
+4. The TLD server holds records for where to find the authoritative server to answer the DNS request. The authoritative server is often also known as the nameserver for the domain. For example, the name server for tryhackme.com is kip.ns.cloudflare.com and uma.ns.cloudflare.com. You'll often find multiple nameservers for a domain name to act as a backup in case one goes down.
+5. An authoritative DNS server is the server that is responsible for storing the DNS records for a particular domain name and where any updates to your domain name DNS records would be made. Depending on the record type, the DNS record is then sent back to the Recursive DNS Server, where a local copy will be cached for future requests and then relayed back to the original client that made the request. DNS records all come with a TTL (Time To Live) value. This value is a number represented in seconds that the response should be saved for locally until you have to look it up again. Caching saves on having to make a DNS request every time you communicate with a server.
 
 ***Answer the questions below***
+
+What field specifies how long a DNS record should be cached for?
+
+***Correct answer:***
+
+What type of DNS Server is usually provided by your ISP?
+
+***Correct answer:***
+
+What type of server holds all the records for a domain?
+
+***Correct answer:***
+
+## Task 5: Practical
+
+Using the website on the right, we can build requests to make DNS queries and view the results. The website will also show you the command you'd need to run on your own computer if you wished to make the requests yourself.
+
+***Answer the questions below***
+
+What is the CNAME of shop.website.thm?
+
+***Correct answer:***
+
+What is the value of the TXT record of website.thm?
+
+***Correct answer:***
+
+What is the numerical priority value for the MX record?
+
+***Correct answer:***
+
+What is the IP address for the A record of <www.website.thm>?
 
 ***Correct answer:***
