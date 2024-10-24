@@ -98,15 +98,15 @@ What type of record handles IPv6 addresses?
 
 What field specifies how long a DNS record should be cached for?
 
-***Correct answer:***
+***Correct answer: TTL***
 
 What type of DNS Server is usually provided by your ISP?
 
-***Correct answer:***
+***Correct answer: recursive***
 
 What type of server holds all the records for a domain?
 
-***Correct answer:***
+***Correct answer: authoritative***
 
 ## Task 5: Practical
 
@@ -116,7 +116,13 @@ Using the website on the right, we can build requests to make DNS queries and vi
 
 What is the CNAME of shop.website.thm?
 
-***Correct answer:***
+*Solution:* We use the command:
+
+```bash
+nslookup --type=CNAME shop.website.thm
+```
+
+***Correct answer: shops.myshopify.com***
 
 What is the value of the TXT record of website.thm?
 
