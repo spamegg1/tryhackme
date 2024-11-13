@@ -14,15 +14,19 @@ HTTPS is the secure version of HTTP. HTTPS data is encrypted so it not only stop
 
 What does HTTP stand for?
 
-***Correct answer:***
+***Correct answer: HyperText Transfer Protocol***
 
 What does the S in HTTPS stand for?
 
-***Correct answer:***
+***Correct answer: secure***
 
 On the mock webpage on the right there is an issue, once you've found it, click on it. What is the challenge flag?
 
-***Correct answer:***
+*Solution:* Click on the lock icon near the URL:
+
+![lock](lock.png)
+
+***Correct answer: THM{INVALID_HTTP_CERT}***
 
 ## Task 2: Requests and Responses
 
@@ -116,11 +120,11 @@ To breakdown each line of the response:
 
 What HTTP protocol is being used in the above example?
 
-***Correct answer:***
+***Correct answer: HTTP/1.1***
 
 What response header tells the browser how much data to expect?
 
-***Correct answer:***
+***Correct answer: Content-Length***
 
 ## Task 3: HTTP Methods
 
@@ -146,19 +150,19 @@ This is used for deleting information/records from a web server.
 
 What method would be used to create a new user account?
 
-***Correct answer:***
+***Correct answer: POST***
 
 What method would be used to update your email address?
 
-***Correct answer:***
+***Correct answer: PUT***
 
 What method would be used to remove a picture you've uploaded to your account?
 
-***Correct answer:***
+***Correct answer: DELETE***
 
 What method would be used to view a news article?
 
-***Correct answer:***
+***Correct answer: GET***
 
 ## Task 4: HTTP Status Codes
 
@@ -196,19 +200,19 @@ Click the "View Site" button on the right to see what some of these HTTP status 
 
 What response code might you receive if you've created a new user or blog post article?
 
-***Correct answer:***
+***Correct answer: 201***
 
 What response code might you receive if you've tried to access a page that doesn't exist?
 
-***Correct answer:***
+***Correct answer: 404***
 
 What response code might you receive if the web server cannot access its database and the application crashes?
 
-***Correct answer:***
+***Correct answer: 503***
 
 What response code might you receive if you try to edit your profile without logging in first?
 
-***Correct answer:***
+***Correct answer: 401***
 
 ## Task 5: Headers
 
@@ -246,15 +250,15 @@ These are the headers that are returned to the client from the server after a re
 
 What header tells the web server what browser is being used?
 
-***Correct answer:***
+***Correct answer: User-Agent***
 
 What header tells the browser what type of data is being returned?
 
-***Correct answer:***
+***Correct answer: Content-Type***
 
 What header tells the web server which website is being requested?
 
-***Correct answer:***
+***Correct answer: Host***
 
 ## Task 6: Cookies
 
@@ -272,7 +276,9 @@ Once you have developer tools open, click on the "Network" tab. This tab will sh
 
 ***Answer the questions below***
 
-***Correct answer:***
+Which header is used to save cookies to your computer?
+
+***Correct answer: Set-Cookie***
 
 ## Task 7: Making Requests
 
