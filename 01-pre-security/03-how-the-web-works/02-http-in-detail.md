@@ -286,20 +286,20 @@ Which header is used to save cookies to your computer?
 
 Make a GET request to `/room`
 
-***Correct answer:***
+***Correct answer: THM{YOU'RE_IN_THE_ROOM}***
 
 Make a GET request to `/blog` and using the gear icon set the id parameter to 1 in the URL field
 
-***Correct answer:***
+***Correct answer: THM{YOU_FOUND_THE_BLOG}***
 
 Make a DELETE request to `/user/1`
 
-***Correct answer:***
+***Correct answer: THM{USER_IS_DELETED}***
 
 Make a PUT request to `/user/2` with the username parameter set to `admin`
 
-***Correct answer:***
+***Correct answer: THM{USER_HAS_UPDATED}***
 
 POST the username of thm and a password of `letmein` to `/login`
 
-***Correct answer:***
+***Correct answer: THM{HTTP_REQUEST_MASTER}***
