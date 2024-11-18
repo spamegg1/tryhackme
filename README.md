@@ -34,3 +34,8 @@
 
 - [Link to site](https://tryhackme.com/r/room/dnsindetail)
 - [Solution](01-pre-security/03-how-the-web-works/01-dns-in-detail.md)
+
+#### HTTP in Detail
+
+- [Link to site](https://tryhackme.com/r/room/httpindetail)
+- [Solution](01-pre-security/03-how-the-web-works/02-http-in-detail.md)
