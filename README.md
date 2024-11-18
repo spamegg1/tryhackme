@@ -39,3 +39,8 @@
 
 - [Link to site](https://tryhackme.com/r/room/httpindetail)
 - [Solution](01-pre-security/03-how-the-web-works/02-http-in-detail.md)
+
+#### How Websites Work
+
+- [Link to site](https://tryhackme.com/r/room/howwebsiteswork)
+- [Solution](01-pre-security/03-how-the-web-works/03-how-websites-work.md)
