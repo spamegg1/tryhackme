@@ -76,8 +76,8 @@ You can view the HTML of any website by right-clicking and selecting
 
 ***Answer the questions below:***
 
-Let's play with some HTML! First click the "View Site" button inside this
-task. On the right-hand side, you should see a box that renders HTML -
+Let's play with some HTML! First click the "View Site" button inside this task.
+On the right-hand side, you should see a box that renders HTML -
 If you enter some HTML into the box and click the green "Render HTML Code"
 button, it will render your HTML on the page; you should see an image of some cats.
 
@@ -86,7 +86,10 @@ button, it will render your HTML on the page; you should see an image of some ca
 One of the images on the cat website is broken - fix it,
 and the image will reveal the hidden text answer!
 
-***Correct answer:***
+*Solution:* Edit the code `<img src='img/cat-2.'>` by adding the file extension:
+`<img src='img/cat-2.jpg'>` then click "Render Html".
+
+***Correct answer: HTMLHERO***
 
 Add a dog image to the page by adding another img tag (`<img>`) on line 11.
 The dog image location is `img/dog-1.png`. What is the text in the dog image?
