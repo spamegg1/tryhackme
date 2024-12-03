@@ -44,3 +44,8 @@
 
 - [Link to site](https://tryhackme.com/r/room/howwebsiteswork)
 - [Solution](01-pre-security/03-how-the-web-works/03-how-websites-work.md)
+
+#### Putting It All Together
+
+- [Link to site](https://tryhackme.com/r/room/puttingitalltogether)
+- [Solution](01-pre-security/03-how-the-web-works/04-putting-it-all-together.md)
