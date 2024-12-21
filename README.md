@@ -49,3 +49,16 @@
 
 - [Link to site](https://tryhackme.com/r/room/puttingitalltogether)
 - [Solution](01-pre-security/03-how-the-web-works/04-putting-it-all-together.md)
+
+### Linux Fundamentals
+
+#### Linux Fundamentals Part 1
+
+- [Link to site](https://tryhackme.com/r/room/linuxfundamentalspart1)
+- [Solution](04-linux-fundamentals/01-part-1.md)
+
+#### Linux Fundamentals Part 2
+
+#### Linux Fundamentals Part 3
+
+### Windows Fundamentals
