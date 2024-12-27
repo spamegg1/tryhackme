@@ -62,3 +62,8 @@
 #### Linux Fundamentals Part 3
 
 ### Windows Fundamentals
+
+#### Windows Fundamentals Part 1
+
+- [Link to site](https://tryhackme.com/r/room/windowsfundamentals1xbx)
+- [Solution](05-windows-fundamentals/01-part-1.md)
