@@ -55,7 +55,7 @@
 #### Linux Fundamentals Part 1
 
 - [Link to site](https://tryhackme.com/r/room/linuxfundamentalspart1)
-- [Solution](04-linux-fundamentals/01-part-1.md)
+- [Solution](01-pre-security/04-linux-fundamentals/01-part-1.md)
 
 #### Linux Fundamentals Part 2
 
@@ -66,4 +66,4 @@
 #### Windows Fundamentals Part 1
 
 - [Link to site](https://tryhackme.com/r/room/windowsfundamentals1xbx)
-- [Solution](05-windows-fundamentals/01-part-1.md)
+- [Solution](01-pre-security/05-windows-fundamentals/01-part-1.md)
