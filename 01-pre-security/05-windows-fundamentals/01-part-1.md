@@ -518,7 +518,7 @@ What built-in account is for guest access to the computer?
 
 What is the account description?
 
-***Correct answer: Account is disabled***
+***Correct answer: window$Fun1!***
 
 ## Task 7: User Account Control
 
