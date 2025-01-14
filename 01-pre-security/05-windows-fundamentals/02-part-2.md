@@ -457,7 +457,9 @@ will be different for you compared to the images above.
 What is the command to open Resource Monitor?
 (The answer is the name of the `.exe` file, not the full path)
 
-***Correct answer:***
+*Solution:* We can look up this in the System Configuration app.
+
+***Correct answer: `resmon.exe`***
 
 ## Task 7: Command Prompt
 
@@ -552,11 +554,11 @@ you can execute in the command prompt [here](https://ss64.com/nt/).
 
 In System Configuration, what is the full command for Internet Protocol Configuration?
 
-***Correct answer:***
+***Correct answer: `C:\Windows\System32\cmd.exe /k %windir%\system32\ipconfig.exe`***
 
 For the `ipconfig` command, how do you show detailed information?
 
-***Correct answer:***
+***Correct answer: `ipconfig /all`***
 
 ## Task 8: Registry Editor
 
@@ -589,7 +591,12 @@ to learn more about the Windows Registry.
 
 ***Answer the questions below***
 
-***Correct answer:***
+What is the command to open the Registry Editor?
+(The answer is the name of the `.exe` file, not the full path)
+
+*Solution:* We can look this up in the System Configuration app.
+
+***Correct answer: `regedt32.exe`***
 
 ## Task 9: Conclusion
 
