@@ -105,22 +105,24 @@ command prompt, or by clicking the Launch button.
 
 ***Answer the questions below***
 
+*Solutions:* We can look up all of these in the System Configuration app.
+
 What is the name of the service that lists Systems Internals as the manufacturer?
 
-***Correct answer:***
+***Correct answer: PsShutdown***
 
 Whom is the Windows license registered to?
 
-***Correct answer:***
+***Correct answer: Windows User***
 
 What is the command for Windows Troubleshooting?
 
-***Correct answer:***
+***Correct answer: `C:\Windows\System32\control.exe /name Microsoft.Troubleshooting`***
 
 What command will open the Control Panel?
 (The answer is the name of `.exe`, not the full path)
 
-***Correct answer:***
+***Correct answer: `control.exe`***
 
 ## Task 3: Change UAC Settings
 
@@ -141,7 +143,9 @@ the UAC settings and Microsoft's stance on the setting.
 What is the command to open User Account Control Settings?
 (The answer is the name of the `.exe` file, not the full path)
 
-***Correct answer:***
+*Solution:* We can look up this in the System Configuration app.
+
+***Correct answer: `UserAccountControlSettings.exe`***
 
 ## Task 4: Computer Management
 
@@ -270,15 +274,23 @@ Windows PowerShell supersedes this tool for WMI.
 What is the command to open Computer Management?
 (The answer is the name of the `.msc` file, not the full path)
 
-***Correct answer:***
+*Solution:* We can look up this in the System Configuration app.
+
+***Correct answer: compmgmt.msc***
 
 At what time every day is the GoogleUpdateTaskMachineUA task configured to run?
 
-***Correct answer:***
+*Solution:* We can look up this in the Computer Management app,
+under the Task Scheduler section.
+
+***Correct answer: 6:15 AM***
 
 What is the name of the hidden folder that is shared?
 
-***Correct answer:***
+*Solution:* We can look up this in the Computer Management app,
+under the Shared Folders section.
+
+***Correct answer: sh4r3dF0Ld3r***
 
 ## Task 5: System Information
 
@@ -364,15 +376,22 @@ Please give it a go. Select Components and search for IP address.
 What is the command to open System Information?
 (The answer is the name of the `.exe` file, not the full path)
 
-***Correct answer:***
+*Solution:* We can look up this in the System Configuration app.
+
+***Correct answer: `msinfo32.exe`***
 
 What is listed under System Name?
 
-***Correct answer:***
+*Solution:* We can look up this in the System Information app.
+
+***Correct answer: thm-winfun2***
 
 Under Environment Variables, what is the value for ComSpec?
 
-***Correct answer:***
+*Solution:* We can look up this in the System Information app,
+under the Environment Variables section.
+
+***Correct answer: `%SystemRoot%\system32\cmd.exe`***
 
 ## Task 6: Resource Monitor
 
