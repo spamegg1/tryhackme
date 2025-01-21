@@ -67,3 +67,13 @@
 
 - [Link to site](https://tryhackme.com/r/room/windowsfundamentals1xbx)
 - [Solution](01-pre-security/05-windows-fundamentals/01-part-1.md)
+
+#### Windows Fundamentals Part 2
+
+- [Link to site](https://tryhackme.com/r/room/windowsfundamentals2x0x)
+- [Solution](01-pre-security/05-windows-fundamentals/02-part-2.md)
+
+#### Windows Fundamentals Part 3
+
+- [Link to site](https://tryhackme.com/r/room/windowsfundamentals3xzx)
+- [Solution](01-pre-security/05-windows-fundamentals/03-part-3.md)
