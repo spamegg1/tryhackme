@@ -37,7 +37,7 @@ Note: The virtual machine may take up to 3 minutes to load.
 
 Read the above and start the virtual machine.
 
-***Correct answer:***
+***Correct answer: No answer needed***
 
 ## Task 2: Windows Updates
 
@@ -140,7 +140,7 @@ Next, we'll look at Virus & threat protection.
 
 Checking the Security section on your VM, which area needs immediate attention?
 
-***Correct answer:***
+***Correct answer: Virus & threat protection***
 
 ## Task 4: Virus & threat protection
 
@@ -223,7 +223,7 @@ The below image was taken from another Windows device to show this feature.
 
 Specifically, what is turned off that Windows is notifying you to turn on?
 
-***Correct answer:***
+***Correct answer: Real-time protection***
 
 ## Task 5: Firewall & network protection
 
@@ -280,7 +280,7 @@ Configuring the Windows Defender Firewall is for advanced Windows users. Refer t
 If you were connected to airport Wi-Fi,
 what most likely will be the active firewall profile?
 
-***Correct answer:***
+***Correct answer: Public network***
 
 ## Task 6: App & browser control
 
@@ -315,7 +315,7 @@ to help protect your device against attacks.
 
 Read the above.
 
-***Correct answer:***
+***Correct answer: No answer needed***
 
 ## Task 7: Device Security
 
@@ -356,7 +356,7 @@ unable to tamper with the security functions of the TPM".
 
 What is the TPM?
 
-***Correct answer:***
+***Correct answer: Trusted Platform Module***
 
 ## Task 8: BitLocker
 
@@ -421,7 +421,7 @@ If you wish to configure Shadow Copies within the attached VM, see below.
 
 What is VSS?
 
-***Correct answer:***
+***Correct answer: Volume Shadow Copy Service***
 
 ## Task 10: Conclusion
 
@@ -451,4 +451,4 @@ to learn more about this.
 
 Read the above.
 
-***Correct answer:***
+***Correct answer: No answer needed***
