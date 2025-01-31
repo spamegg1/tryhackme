@@ -96,7 +96,11 @@ for more information.
 There were two definition updates installed in the attached VM.
 On what date were these updates installed?
 
-***Correct answer:***
+*Solution:* From the Start Menu, open Windows Updates.
+Then click on "History of Updates".
+Then click on "Definition Updates".
+
+***Correct answer: 5/3/2021***
 
 ## Task 3: Windows Security
 
@@ -384,7 +388,10 @@ Refer to the official Microsoft documentation to learn more about BitLocker
 We should use a removable drive on systems without a TPM version 1.2 or later.
 What does this removable drive contain?
 
-***Correct answer:***
+*Solution:* Follow the link to Microsoft documentation.
+Then search the page  with Ctrl+F for "removable drive".
+
+***Correct answer: startup key***
 
 ## Task 9: Volume Shadow Copy Service
 
