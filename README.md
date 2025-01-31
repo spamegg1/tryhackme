@@ -28,6 +28,14 @@
 - [Link to site](https://tryhackme.com/r/room/whatisnetworking)
 - [Solution](01-pre-security/02-network-fundamentals/01-what-is-networking.md)
 
+#### Intro to LAN (Premium)
+
+#### The OSI Model (Premium)
+
+#### Packets & Frames (Premium)
+
+#### Extending Your Network (Premium)
+
 ### How the Web Works
 
 #### DNS in Detail
@@ -57,9 +65,9 @@
 - [Link to site](https://tryhackme.com/r/room/linuxfundamentalspart1)
 - [Solution](01-pre-security/04-linux-fundamentals/01-part-1.md)
 
-#### Linux Fundamentals Part 2
+#### Linux Fundamentals Part 2 (Premium)
 
-#### Linux Fundamentals Part 3
+#### Linux Fundamentals Part 3 (Premium)
 
 ### Windows Fundamentals
 
