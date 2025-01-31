@@ -85,3 +85,27 @@
 
 - [Link to site](https://tryhackme.com/r/room/windowsfundamentals3xzx)
 - [Solution](01-pre-security/05-windows-fundamentals/03-part-3.md)
+
+## Cyber Security 101
+
+### Start Your Cyber Security Journey
+
+#### Offensive Security Intro
+
+This is the same as "Intro to Offensive Security" above from Pre-Security.
+
+- [Link to site](https://tryhackme.com/r/room/offensivesecurityintro)
+- [Solution](02-cyber-security-101/01-start-your-cyber-security-journey/01-offensive-security-intro.md)
+
+#### Defensive Security Intro
+
+This is the same as "Intro to Defensive Security" above from Pre-Security.
+
+- [Link to site](https://tryhackme.com/r/room/defensivesecurityintro)
+- [Solution](02-cyber-security-101/01-start-your-cyber-security-journey/02-defensive-security-intro.md)
+
+#### Search Skills
+
+- [Link to site](https://tryhackme.com/r/room/searchskills)
+
+- [Solution](02-cyber-security-101/01-start-your-cyber-security-journey/03-search-skills)
