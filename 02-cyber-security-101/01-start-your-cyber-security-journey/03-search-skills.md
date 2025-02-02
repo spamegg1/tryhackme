@@ -54,7 +54,7 @@ Check whether multiple reliable and reputable sources agree on the central claim
 
 What do you call a cryptographic method or product considered bogus or fraudulent?
 
-***Correct answer: ???***
+***Correct answer: snake oil***
 
 What is the name of the command replacing `netstat` in Linux systems?
 
