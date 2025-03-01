@@ -109,3 +109,34 @@ This is the same as "Intro to Defensive Security" above from Pre-Security.
 - [Link to site](https://tryhackme.com/r/room/searchskills)
 
 - [Solution](02-cyber-security-101/01-start-your-cyber-security-journey/03-search-skills)
+
+### Linux Fundamentals
+
+- As before, Parts 1, 2, 3 (scroll up for links)
+
+### Windows and AD Fundamentals
+
+- As before, Parts 1, 2, 3 (scroll up for links)
+
+#### Active Directory Basics
+
+- [Link to site](https://tryhackme.com/room/winadbasics)
+- [Solution](02-cyber-security-101/03-windows-ad-fundamentals/04-active-directory-basics.md)
+
+## Cyber Security Basics (Free Roadmap)
+
+### Careers in Cyber
+
+- As before (scroll up for links)
+
+### Security Principles
+
+- [Link to site](https://tryhackme.com/r/room/securityprinciples)
+- [Solution](03-cyber-security-basic-free/02-security-principles.md)
+
+### Governance & Regulation
+
+- [Link to site](https://tryhackme.com/r/room/cybergovernanceregulation)
+- [Solution](03-cyber-security-basic-free/03-governance-regulation.md)
+
+### Cyber Kill Chain

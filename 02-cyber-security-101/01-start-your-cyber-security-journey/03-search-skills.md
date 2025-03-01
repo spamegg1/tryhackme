@@ -71,7 +71,7 @@ you to carry out advanced searches. Consider the following examples:
 - Bing
 - DuckDuckGo
 
-Let’s consider the search operators supported by Google.
+Let's consider the search operators supported by Google.
 
 - `"exact phrase"`:
 Double quotes indicate that you are looking for pages with the exact word or phrase.
@@ -84,7 +84,7 @@ For example, we can search for success stories on TryHackMe using
 - `-`: The minus sign allows you to omit search results that contain a
 particular word or phrase.
 For example, you might be interested in learning about the pyramids,
-but you don’t want to view tourism websites;
+but you don't want to view tourism websites;
 one approach is to search for `pyramids -tourism` or `-tourism pyramids`.
 - `filetype:`: This search operator is indispensable for finding files
 instead of web pages. Some of the file types you can search for using Google are
@@ -119,7 +119,7 @@ By that, we refer to search engines used to find specific types of results.
 
 ### Shodan
 
-Let’s start with [Shodan](https://www.shodan.io/),
+Let's start with [Shodan](https://www.shodan.io/),
 a search engine for devices connected to the Internet.
 It allows you to search for specific types and versions of servers,
 networking equipment, industrial control systems, and IoT devices.
@@ -170,7 +170,7 @@ and that's when community members can provide a more in-depth explanation.
 
 [Have I Been Pwned](https://haveibeenpwned.com/) (HIBP) does one thing;
 it tells you if an email address has appeared in a leaked data breach.
-Finding one’s email within leaked data indicates leaked private information and,
+Finding one's email within leaked data indicates leaked private information and,
 more importantly, passwords. Many users use the same password across
 multiple platforms, if one platform is breached, their password on
 other platforms is also exposed.
@@ -216,7 +216,7 @@ Alternatively, visit the [National Vulnerability Database](https://nvd.nist.gov/
 ### Exploit Database
 
 There are many reasons why you would want to exploit a vulnerable application;
-one would be assessing a company’s security as part of its red team.
+one would be assessing a company's security as part of its red team.
 Needless to say, we should not try to exploit a vulnerable system unless
 we are given permission, usually via a legally binding agreement.
 
@@ -257,7 +257,7 @@ On Linux and every Unix-like system, each command is expected to have a man page
 In fact, man pages also exist for system calls,
 library functions, and even configuration files.
 
-Let’s say we want to check the manual page for the command `ip`.
+Let's say we want to check the manual page for the command `ip`.
 We issue the command `man ip`. The screenshot below shows the page we received.
 You might want to start the AttackBox and run `man ip` on the terminal.
 Press `q` to quit.
@@ -321,7 +321,7 @@ however, this severely limits your experience.
 Instead, one recommendation is to use a temporary email address to
 discover these platforms without linking them to your real email addresses;
 once done, you can terminate the accounts and associated email addresses.
-One reason for not using your primary account is that you don’t want
+One reason for not using your primary account is that you don't want
 your contacts to start connecting with you there when you are only
 temporarily exploring a platform.
 
