@@ -26,24 +26,24 @@ Acquire the basic computer science skills required to get started in cyber secur
 ##### Offensive Security Intro
 
 - [Link to site](https://tryhackme.com/r/room/offensivesecurityintro)
-- [Solution](01-pre-security/01-intro-to-cyber-security/01-offensive-security-intro.md)
+- [Solution](premium-roadmap/01-pre-security/01-intro-to-cyber-security/01-offensive-security-intro.md)
 
 ##### Defensive Security Intro
 
 - [Link to site](https://tryhackme.com/room/defensivesecurityintro)
-- [Solution](01-pre-security/01-intro-to-cyber-security/02-defensive-security-intro.md)
+- [Solution](premium-roadmap/01-pre-security/01-intro-to-cyber-security/02-defensive-security-intro.md)
 
 ##### Careers in Cyber
 
 - [Link to site](https://tryhackme.com/r/room/careersincyber)
-- [Solution](01-pre-security/01-intro-to-cyber-security/03-careers-in-cyber.md)
+- [Solution](premium-roadmap/01-pre-security/01-intro-to-cyber-security/03-careers-in-cyber.md)
 
 #### Network Fundamentals
 
 ##### What is Networking?
 
 - [Link to site](https://tryhackme.com/r/room/whatisnetworking)
-- [Solution](01-pre-security/02-network-fundamentals/01-what-is-networking.md)
+- [Solution](premium-roadmap/01-pre-security/02-network-fundamentals/01-what-is-networking.md)
 
 ##### Intro to LAN (Premium)
 
@@ -58,29 +58,29 @@ Acquire the basic computer science skills required to get started in cyber secur
 ##### DNS in Detail
 
 - [Link to site](https://tryhackme.com/r/room/dnsindetail)
-- [Solution](01-pre-security/03-how-the-web-works/01-dns-in-detail.md)
+- [Solution](premium-roadmap/01-pre-security/03-how-the-web-works/01-dns-in-detail.md)
 
 ##### HTTP in Detail
 
 - [Link to site](https://tryhackme.com/r/room/httpindetail)
-- [Solution](01-pre-security/03-how-the-web-works/02-http-in-detail.md)
+- [Solution](premium-roadmap/01-pre-security/03-how-the-web-works/02-http-in-detail.md)
 
 ##### How Websites Work
 
 - [Link to site](https://tryhackme.com/r/room/howwebsiteswork)
-- [Solution](01-pre-security/03-how-the-web-works/03-how-websites-work.md)
+- [Solution](premium-roadmap/01-pre-security/03-how-the-web-works/03-how-websites-work.md)
 
 ##### Putting It All Together
 
 - [Link to site](https://tryhackme.com/r/room/puttingitalltogether)
-- [Solution](01-pre-security/03-how-the-web-works/04-putting-it-all-together.md)
+- [Solution](premium-roadmap/01-pre-security/03-how-the-web-works/04-putting-it-all-together.md)
 
 #### Linux Fundamentals
 
 ##### Linux Fundamentals Part 1
 
 - [Link to site](https://tryhackme.com/r/room/linuxfundamentalspart1)
-- [Solution](01-pre-security/04-linux-fundamentals/01-part-1.md)
+- [Solution](premium-roadmap/01-pre-security/04-linux-fundamentals/01-part-1.md)
 
 ##### Linux Fundamentals Part 2 (Premium)
 
@@ -91,17 +91,17 @@ Acquire the basic computer science skills required to get started in cyber secur
 ##### Windows Fundamentals Part 1
 
 - [Link to site](https://tryhackme.com/r/room/windowsfundamentals1xbx)
-- [Solution](01-pre-security/05-windows-fundamentals/01-part-1.md)
+- [Solution](premium-roadmap/01-pre-security/05-windows-fundamentals/01-part-1.md)
 
 ##### Windows Fundamentals Part 2
 
 - [Link to site](https://tryhackme.com/r/room/windowsfundamentals2x0x)
-- [Solution](01-pre-security/05-windows-fundamentals/02-part-2.md)
+- [Solution](premium-roadmap/01-pre-security/05-windows-fundamentals/02-part-2.md)
 
 ##### Windows Fundamentals Part 3
 
 - [Link to site](https://tryhackme.com/r/room/windowsfundamentals3xzx)
-- [Solution](01-pre-security/05-windows-fundamentals/03-part-3.md)
+- [Solution](premium-roadmap/01-pre-security/05-windows-fundamentals/03-part-3.md)
 
 ### ***Cyber Security Foundations***
 
@@ -114,31 +114,51 @@ Develop cyber security skills needed to enter any career in the industry.
 ##### Offensive Security Intro
 
 - [Link to site](https://tryhackme.com/r/room/offensivesecurityintro)
-- [Solution](02-cyber-security-101/01-start-your-cyber-security-journey/01-offensive-security-intro.md)
+- [Solution](premium-roadmap/02-cyber-security-101/01-start-your-cyber-security-journey/01-offensive-security-intro.md)
 
 ##### Defensive Security Intro
 
 - [Link to site](https://tryhackme.com/r/room/defensivesecurityintro)
-- [Solution](02-cyber-security-101/01-start-your-cyber-security-journey/02-defensive-security-intro.md)
+- [Solution](premium-roadmap/02-cyber-security-101/01-start-your-cyber-security-journey/02-defensive-security-intro.md)
 
 ##### Search Skills
 
 - [Link to site](https://tryhackme.com/r/room/searchskills)
 
-- [Solution](02-cyber-security-101/01-start-your-cyber-security-journey/03-search-skills)
+- [Solution](premium-roadmap/02-cyber-security-101/01-start-your-cyber-security-journey/03-search-skills)
 
 #### Linux Fundamentals
 
-- As before, Parts 1, 2, 3 (scroll up for links)
+##### Linux Fundamentals Part 1
+
+- [Link to site](https://tryhackme.com/r/room/linuxfundamentalspart1)
+- [Solution](premium-roadmap/02-cyber-security-101/02-linux-fundamentals/01-part-1.md)
+
+##### Linux Fundamentals Part 2 (Premium)
+
+##### Linux Fundamentals Part 3 (Premium)
 
 #### Windows and AD Fundamentals
 
-- As before, Parts 1, 2, 3 (scroll up for links)
+##### Windows Fundamentals Part 1
+
+- [Link to site](https://tryhackme.com/r/room/windowsfundamentals1xbx)
+- [Solution](premium-roadmap/02-cyber-security-101/03-windows-ad-fundamentals/01-part-1.md)
+
+##### Windows Fundamentals Part 2
+
+- [Link to site](https://tryhackme.com/r/room/windowsfundamentals2x0x)
+- [Solution](premium-roadmap/02-cyber-security-101/03-windows-ad-fundamentals/02-part-2.md)
+
+##### Windows Fundamentals Part 3
+
+- [Link to site](https://tryhackme.com/r/room/windowsfundamentals3xzx)
+- [Solution](premium-roadmap/02-cyber-security-101/03-windows-ad-fundamentals/03-part-3.md)
 
 ##### Active Directory Basics
 
 - [Link to site](https://tryhackme.com/room/winadbasics)
-- [Solution](02-cyber-security-101/03-windows-ad-fundamentals/04-active-directory-basics.md)
+- [Solution](premium-roadmap/02-cyber-security-101/03-windows-ad-fundamentals/04-active-directory-basics.md)
 
 #### Command Line
 
@@ -194,9 +214,31 @@ Choose one of 3 paths:
 
 ### Security Analyst
 
+#### SOC Level 1
+
+#### SAL1 Professional Certification
+
+#### SOC Level 2
+
+#### Defending Azure
+
 ### Penetration Tester
 
+#### Jr Penetration Tester
+
+#### Web Fundamentals
+
+#### Web Application Pentesting
+
+#### Red Teaming
+
 ### Security Engineer
+
+#### Security Engineer
+
+#### DevSecOps
+
+#### Attacking and Defending AWS
 
 ## Free Roadmap
 
@@ -217,19 +259,23 @@ Acquire the basic cyber security skills required to get started in cyber securit
 
 ### Careers in Cyber
 
-- As before (scroll up for links)
+- [Link to site](https://tryhackme.com/r/room/careersincyber)
+- [Solution](free-roadmap/01-cyber-security-basics/01-careers-in-cyber.md)
 
 ### Security Principles
 
 - [Link to site](https://tryhackme.com/r/room/securityprinciples)
-- [Solution](03-cyber-security-basic-free/02-security-principles.md)
+- [Solution](free-roadmap/01-cyber-security-basics/02-security-principles.md)
 
 ### Governance & Regulation
 
 - [Link to site](https://tryhackme.com/r/room/cybergovernanceregulation)
-- [Solution](03-cyber-security-basic-free/03-governance-regulation.md)
+- [Solution](free-roadmap/01-cyber-security-basics/03-governance-regulation.md)
 
 ### Cyber Kill Chain
+
+- [Link to site](https://tryhackme.com/r/room/cyberkillchainzmt)
+- [Solution](free-roadmap/01-cyber-security-basics/04-cyber-kill-chain.md)
 
 ### ***Fundamental Skills***
 
