@@ -283,23 +283,53 @@ Acquire the fundamental skills needed to enter any career in the industry.
 
 #### Linux Fundamentals Part 1
 
+- [Link to site](https://tryhackme.com/room/linuxfundamentalspart1)
+- [Solution](free-roadmap/02-fundamental-skills/01-linux-fundamentals-part-1.md)
+
 #### Python Basics
+
+- [Link to site](https://tryhackme.com/r/room/)
+- [Solution](free-roadmap/.md)
 
 #### Common Attacks
 
+- [Link to site](https://tryhackme.com/r/room/)
+- [Solution](free-roadmap/.md)
+
 #### What is Networking?
+
+- [Link to site](https://tryhackme.com/r/room/)
+- [Solution](free-roadmap/.md)
 
 #### Network Services
 
+- [Link to site](https://tryhackme.com/r/room/)
+- [Solution](free-roadmap/.md)
+
 #### Network Services 2
+
+- [Link to site](https://tryhackme.com/r/room/)
+- [Solution](free-roadmap/.md)
 
 #### HTTP in Detail
 
+- [Link to site](https://tryhackme.com/r/room/)
+- [Solution](free-roadmap/.md)
+
 #### DNS in Detail
+
+- [Link to site](https://tryhackme.com/r/room/)
+- [Solution](free-roadmap/.md)
 
 #### How Websites Work
 
+- [Link to site](https://tryhackme.com/r/room/)
+- [Solution](free-roadmap/.md)
+
 #### Putting it all together
+
+- [Link to site](https://tryhackme.com/r/room/)
+- [Solution](free-roadmap/.md)
 
 ### ***Cyber Security Career Skills***
 
