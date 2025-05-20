@@ -288,8 +288,8 @@ Acquire the fundamental skills needed to enter any career in the industry.
 
 #### Python Basics
 
-- [Link to site](https://tryhackme.com/r/room/)
-- [Solution](free-roadmap/.md)
+- [Link to site](https://tryhackme.com/room/pythonbasics)
+- [Solution](free-roadmap/02-fundamental-skills/02-python-basics.md)
 
 #### Common Attacks
 
