@@ -73,7 +73,7 @@ The table below shows the different operations.
 |:-:|:-:|:-:|
 |Addition|+|1 + 1 = 2|
 |Subtraction|-|5 - 1 = 4|
-|Multiplication|*|10 * 10 = 100|
+|Multiplication|`*`|`10 * 10 = 100`|
 |Division|/|10 / 2 = 5|
 |Modulus|%|10 % 2 = 0|
 |Exponent|**|5**2 = 25|
