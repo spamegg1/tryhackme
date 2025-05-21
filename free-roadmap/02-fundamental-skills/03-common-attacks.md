@@ -380,50 +380,580 @@ destroy any potential opportunities to decrypt the data without paying.
 
 ***Correct answer: Bitcoin***
 
-## Task 5
+## Task 5: Passwords and Authentication
 
-### Subheading
+### Overview
+
+For better or worse, passwords are an integral part of most authentication systems. We
+use passwords to protect everything, from our social media accounts to our banking
+applications. Unfortunately, despite their significant importance, it is still
+all-too-easy to create and use an insecure password, and even easier to take other
+actions that lower the overall security of the system. For example, even the most robust
+password in the world is useless if written on a whiteboard in full view of a web-camera
+especially if the same password is used for more than one service.
+
+This task will cover password security, as well as other measures
+you can take to strengthen your overall authentication security.
+
+### What Makes A Strong Password?
+
+Advice on what constitutes a strong password has changed over time. In the past, people
+were advised to choose complex passwords that were easy to remember, for example:
+
+```bash
+@Ed1nburgh#1988-2000!
+```
+
+The password above is a collection of lowercase and uppercase characters, including
+symbols and numeric digits. It is over eight characters long (making it almost impossible
+to attack by brute-force with our current level of technology) and is created using
+knowledge that is unlikely to be held by anyone other than the owner of the password.
+Importantly, it also doesn't conform to normal patterns  (using unusual symbols,
+exchanging only some characters of l33t speak, and containing a date range as opposed to
+a single date), making it harder to guess. For all intents and purposes, this is a
+traditionally strong password. That said, the personal connection means that this
+password could potentially still be made weaker through social
+engineering or in-depth information gathering on a target.
+
+Current best practices lean more towards length than complexity. For example:
+
+```bash
+Vim is _obviously_, indisputably the best text editor in existence!
+```
+
+By using a passphrase rather than a traditional password, the password is significantly
+longer whilst still retaining some of the more complex elements — despite not looking
+quite so obfuscated. This has the advantage of being easier to remember whilst still
+being incredibly difficult to brute-force.
+
+Ideally, however, you should use long, completely random passwords. For example:
+
+```bash
+w41=V1)S7KIJGPN,dII>cHEh>FRVQsj3M^]CB
+```
+
+These take millions of years to crack and are objectively the most secure option
+available. The drawback is usability; however, this is largely mitigated by using a
+password manager, which will be discussed in the next task.
+
+### What Makes A Weak Password?
+
+People often go for simple passwords that mean something to them, often following one of
+a few "simple" patterns. For example, a commonly used pattern is a name/location,
+followed by a year, followed by an exclamation mark. For example:
+
+```bash
+Gareth2012!
+```
+
+This is enough to satisfy most password complexity requirements (lowercase and uppercase
+characters, over eight characters, contains numerical digits and a symbol); however, it
+is trivial to guess if an attacker knows that you have a son called Gareth who was born
+in 2012. This kind of password is inherently extremely insecure.
+
+In short, any password that could easily be guessed by someone who knows you relatively
+well (this includes an attacker looking at your social media) is a bad idea!
+
+Equally, short passwords (especially those that don't contain any non-alphanumeric
+characters) are weak against brute-force attacks.
+We will look at this in more depth later in the task.
+
+Of equal importance to password strength is password reuse. You can have the strongest
+password in the world, but if you use it across numerous accounts and it gets leaked, an
+attacker can simply use the same strong password on all affected accounts. Equally, if
+you find out that your password has been exposed, you will have a lot of work to do
+changing all of your account passwords!
+
+### Exposed Passwords
+
+Unfortunately, not every service stores passwords securely (making it doubly important
+that you don't reuse passwords!).
+
+#### Background Information: Safe Password Storage (Click to read)
+
+When you sign up for an online account, the provider must store a copy of your password
+in order to validate it the next time you sign in; but this poses a huge problem:
+how can the passwords be stored securely?
+
+- Storing the passwords as plain text (e.g. the same way you submit them) isn't an option
+as every password will instantly be leaked if the database is ever hacked.
+- Encrypting the passwords is an improvement, but not by much. If the passwords are
+stored encrypted, then they can also be decrypted — an attacker simply has to obtain the
+key, and they can turn every encrypted password back into plaintext. Encrypting passwords
+was part of what made the
+[2013 Adobe breach](https://nakedsecurity.sophos.com/2013/11/04/anatomy-of-a-password-disaster-adobes-giant-sized-cryptographic-blunder/)
+so serious.
+- The industry-standard password storage method is referred to as password hashing.
+Password hashing (or simply "hashing") involves using complicated mathematical algorithms
+to take any input and turn it into a unique, fixed-length output in a way that is
+impossible to reverse. This means that when you sign up, your password will be hashed and
+stored in the database in a way that stops everyone (including
+server administrators) from being able to read it!
+- When you try to sign in, the same algorithm is applied to the password that you supply:
+if the stored hash matches the hash of the password you are trying to log in with
+(remembering that the same input will always create the same unique output), then you are
+considered to have successfully authenticated.
+
+Ideally, every service would hash user passwords with a secure algorithm. Even if the
+entire database were leaked, the attackers would still need to waste valuable time and
+computational power attempting to brute-force the (otherwise useless) hashes to find the
+plaintext passwords. This is why it is so important that passwords are long and
+preferably of a decent level of complexity: the longer the password and the larger the
+number of potential characters involved, the more power it takes to effectively guess the
+password input used to generate a hash.
+
+(end of Background)
+
+So, what happens if a service gets hacked and their database containing user account
+information gets leaked? As a best-case scenario, the service has used a secure hashing
+algorithm, and you have a strong password — in this case, your password is safe, but your
+email address or username may still be leaked publicly (so expect some spam emails).
+
+As a worst-case scenario, your plaintext password is either immediately available, or is
+easy for an attacker to find. If this happens then both your username and password are
+known to the attacker, allowing them to take over your account or perform "credential
+stuffing" attacks — using your stolen username and password pair against other services
+to see if you reused them elsewhere. These leaked databases containing credentials
+frequently appear on the dark web, which leads us to our final point in this section:
+data exposure notification services.
+
+The largest and most well-known data exposure checker is called
+["Have I Been Pwned?"](https://haveibeenpwned.com/).
+It exists as a free online service that scours data dumps and catalogues all of the
+information found, allowing users to enter their email addresses to see if they have been
+included in any breaches. Have I Been Pwned also allows you to add yourself to a
+notification list, meaning that you will receive an email notifying you if your email
+address appears in any data breaches.
+
+Whilst not a perfect defence, notification services give you a vital early
+warning to change your passwords (hopefully) before you get hacked.
+
+### Password Attacks
+
+An attacker has a few options when it comes to attacking passwords and authentication
+systems. Some attacks are entirely local (i.e. working entirely on a device owned by the
+attacker without interacting with the target service at all),
+others are remote attacks involving the original server.
+
+Local attacks require a stolen copy of the credentials in question. The attacker will
+take a file full of stolen usernames/emails and hashed passwords, then use software to
+effectively try to guess the input that created the hash either using randomly generated
+sequences of characters (slower but more thorough) or by using a pre-generated wordlist
+of possible passwords (faster but much more likely to miss things). Hybrid types are also
+very widely used; these are when an attacker takes an existing wordlist and mutates it to
+add new characters, symbols, or random elements. Local password attacks will be
+demonstrated in the interactive element for this task.
+
+Remote attacks tend to be one of two categories; they either involve attempting to
+brute-force known usernames by sending requests to the server and seeing what it responds
+with, or they use known username and password pairs from previous breaches to see if they
+are valid on the target site — this is the aforementioned credential stuffing.
 
 ***Answer the questions below***
 
-***Correct answer:***
+Put yourself in the shoes of a malicious hacker. You have managed to dump the password
+database for an online service, but you still have to crack those hashes!
 
-## Task 6
+Click the green button at the start of the task to
+deploy the interactive hash brute-forcer!
 
-### Subheading
+***Correct answer: No answer needed***
+
+Based on the content of the website, you have generated a list of
+likely passwords, which is as follows:
+
+```bash
+TryH@ckMe
+TryHackMe123
+THM123456
+qwertyuiop123
+TryHackMe2021
+TryHackMe123!
+TryHackMe345
+TryHackM3!
+```
+
+Copy the list of passwords into the "Password List" field of the hash cracker,
+then click "Go"!
+
+***Correct answer: No answer needed***
+
+Look at the "Current Word / Hash" section of the hash cracker.
+
+Notice that for each word in the list you entered, the cracker is creating an MD5 hash of
+the word then comparing it to the Target Hash.
+If the two hashes match then the password has been found!
+
+The hash cracker should find the password that matches the target hash very quickly.
+
+What is the password?
+
+***Correct answer: TryHackMe123!***
+
+This is a very simple, browser-based example; however, in reality local hash cracking
+with a wordlist isn't any more complex from a high-level perspective — it's the same
+technique, but with a lot more potential passwords!
+
+Hopefully this example illustrates why it is so important to choose a
+strong password, even if the passwords are hashed appropriately.
+
+In the next task we will look at some of the common account protection measures,
+as well as how to generate secure passwords.
+
+***Correct answer: No answer needed***
+
+## Task 6: Multi-Factor Authentication and Password Managers
+
+### Overview
+
+In the previous task, we looked at some of the common attacks made against passwords and
+authentication systems. We also looked at what makes a password weak or strong. This task
+will cover some of the extra steps that you can take to enhance your password security
+through the use of password managers and multi-factor authentication.
+
+### Multi-Factor Authentication
+
+Multi-Factor Authentication (or MFA) is a term used to describe any authentication
+process where you need more than one thing to log in. The most common example of this is
+when you enter the password for an account, then get asked for a six-digit code that is
+sent to your phone and usually expires after fifteen minutes or so. This particular
+second authentication factor is referred to as a Time-based One Time Password (or TOTP)
+and is one of the most common second factors currently in use.
+
+#### Background Information: Three Factors of Authentication (Click to Read)
+
+There are three main factors that can be considered when
+implementing multi-factor authentication; these are:
+
+- Something you have (e.g. a smart card, a TOTP, or a hardware authenticator such as a
+"YubiKey". You may also have experienced your bank asking you to insert your card into a
+card reader and enter your PIN code before allowing access to
+online banking services — this is the same principle)
+- Something you know (e.g. a password)
+- Something you are (i.e. biometric data such as a fingerprint or iris scan)
+
+An ideal authentication uses all three of these — for example; it may require a password,
+a smart card, and a fingerprint before allowing the user access to the system.
+
+Unfortunately, most individuals do not have access to a smart card reader, an expensive
+hardware authenticator (e.g. the aforementioned YubiKey) or a fingerprint scanner. They
+do have access to a smartphone which can be used to receive or access time-based one time
+passwords. As such, mobile-based MFA is amongst the most common multi-factor
+authentication methods implemented for personal use.
+Whilst not ideal, two factors are better than one.
+
+(end of Background)
+
+You should always activate multi-factor authentication where available. Doing so means
+that an attacker must obtain more than one factor if they wish to compromise any of your
+accounts — for example, they must have both the password and your phone (or the ability
+to intercept your text messages). Many people see it as an "unnecessary hassle"; however,
+it is well worth it for the added security!
+
+Unfortunately, SMS (text message) based TOTP authentication — despite being the most
+commonly used — is far from the most secure as there have been documented cases of
+attackers managing to reroute a victim's texts without undue
+[difficulty](https://krebsonsecurity.com/2021/03/can-we-stop-pretending-sms-is-secure-now).
+
+So, if not SMS then what? Time-based one-time passwords are still the most accessible
+form of second-factor authentication for most users;
+fortunately, it's possible to generate them yourself!
+
+Most services will provide you with an option to use an "Authenticator App" for MFA. When
+you select this option, you will be presented with a QR code as well as a "secret key" —
+either of which can be scanned or imported into an app such as
+[Authy](https://authy.com/) or Google Authenticator (Android | IOS).
+Once you have added your secret key for the application,
+these apps can generate TOTP codes entirely on your device without
+requiring any network connectivity or interceptable SMS.
+
+### Password Managers and Generating Strong Passwords
+
+As mentioned previously, the most secure passwords are simply long,
+completely random strings of characters, digits, and symbols. Unfortunately, these random
+passwords are very difficult to memorise — indeed, memorising a different 60-digit,
+randomly generated password for every online account
+is simply not feasible for most people.
+
+Enter: Password Managers.
+
+At the most basic level, password managers provide a safe space to store your passwords.
+They store passwords in "vaults": encrypted storage either locally on your own device, or
+as an online service (which also usually allows you to access your passwords from any
+device). These vaults are accessed using a master password — the only password you need
+to remember —  or (more commonly in recent years) biometric data such as a fingerprint.
+Some password managers are free, whilst others require a paid subscription. That said,
+the features and usability provided by paid offerings
+often make them well worth the expense!
+
+The more fully-featured password managers usually also include a range of additional
+capabilities, such as storing other types of data (e.g. images, files, etc.),
+auto-filling passwords automatically for other services, and secure password generation.
+Having these features available means that you can quickly and easily generate very
+strong passwords and store them automatically, then seamlessly have the password entered
+for you when you attempt to log into an app, all within the same application.
+
+Password managers are the recommended way to handle authentication for your many
+accounts; however, it is worth remembering that the security of the whole structure can
+revolve around a single master password, so make sure that it's solid!
+
+Some common password managers include:
+
+- [1Password](https://1password.com/)
+- [LastPass](https://www.lastpass.com/)
+- [KeePass](https://keepass.info/)
+- [Bitwarden](https://bitwarden.com/)
+
+There are many others available! Each password manager has its own advantages and
+disadvantages, so it is well worth doing some research to
+find the one that suits you best.
 
 ***Answer the questions below***
 
-***Correct answer:***
+Where you have the option, which should you use as a second authentication
+factor between SMS based TOTPs or Authenticator App based TOTPs (SMS or App)?
 
-## Task 7
+***Correct answer: App***
 
-### Subheading
+## Task 7: Public Network Safety
+
+### The Problem
+
+The internet plays a gargantuan role in modern life, with most people being connected in
+some way virtually constantly. As such, most public spaces (e.g. cafés, restaurants,
+public transport) are fully equipped with public WiFI to let people catch up on email
+(or, equally likely, play the latest hit mobile game). What many people don't realise is
+that expecting public WiFi to be available can prove to be very dangerous indeed.
+
+Public WiFi, whilst incredibly handy, also gives an attacker ideal opportunities to
+attack other users' devices or simply intercept and record traffic to steal sensitive
+information. This latter technique can be as simple as exploiting the fact that most
+people expect to see public networks available. The attacker can quickly set up a network
+of their own and monitor the traffic of everyone who connects; this is referred to as a
+"man-in-the-middle" attack and is very easy to carry out. For example, if you were to
+connect to a network belonging to an attacker then logged into an account for a website
+that doesn't use an encrypted (HTTPS) connection, the attacker could simply pluck your
+credentials out of the network traffic and use them to log into your account for
+themselves. This scenario will be explored in more detail in the interactive element to
+this task; however, it is fortunately significantly less likely to occur with modern
+websites which implement T ransport L ayer S ecurity (TLS) to encrypt traffic between
+their servers and users as standard.
+
+Equally, being connected to any network (regardless of whether you trust it or not) makes
+your device visible to others on the network. You never know who else is
+on a public network or what their intentions might be!
+
+### The Solutions
+
+The ideal solution to this problem is simply not connecting to untrusted networks.
+Beneficial though public wireless connections are, it will always be safer to use a
+mobile hotspot or private network. Unfortunately, the ideal solution is not always
+feasible; when this is the case, we must rely on other methods of staying safe.
+
+V irtual P rivate N etworks (VPNs) encrypt all traffic leaving and re-entering your
+machine, rendering any interception techniques useless as the intercepted data will
+simply look like gibberish. Whilst it is possible to host your own VPN server for free,
+most people prefer to use one of the many online solutions. Some of these commercial
+solutions are free, but be warned: free VPNs tend not to provide the best security and
+often harvest your data themselves to make a profit. That said, the price of a good VPN
+is more than worth it for the increased safety when operating on untrusted networks.
+There are many good options around, including [ProtonVPN](https://protonvpn.com/)
+and [Mullvad VPN](https://mullvad.net/en/), to name two.
+
+### Website Connection Security
+
+In addition to the actions that you take to protect yourself , it is also
+important to be aware of the measures that online services take to protect you.
+
+All websites should now only serve information in the safety of an encrypted connection.
+As with using a VPN, this prevents an attacker from reading, or modifying your web
+traffic if they intercept it. The encrypted connection used to create HTTPS ( H yper T
+ext T ransfer P rotocol S ecure) is referred to as TLS ( T ransport L ayer S ecurity),
+and in most browsers is represented by a padlock to the left of the search bar, which
+indicates that the connection is secure:
+
+![padlock](padlock.png)
+
+With this in place, your traffic can only be decrypted in very select circumstances:
+namely, if it is a work or school managed device and you are
+connected to a work/school network.
+
+*Note: The presence of the padlock indicates that the connection is secure; it does not
+guarantee that the website itself is safe . In other words, a malicious website can still
+easily have a TLS cert (meaning that your traffic with the server is encrypted), but that
+doesn't stop the site from having a malicious purpose.*
+
+If you are accessing a website without the padlock symbol, never enter any credentials
+or sensitive information — especially if you are using an untrusted network.
+
+In some instances, you may also see a padlock with a cross through it or an exclamation
+mark over it; this indicates that the connection is theoretically secure but that there
+is something wrong with the certificate in use by the server. The presence of this
+altered padlock icon can mean anything from the server administrator simply letting the
+certificate go out of date to an attacker actively meddling with the security of your
+connection. In other words: if the icon is anything other than a regular padlock,
+do not trust that connection is secure.
+
+You may also encounter full-page errors related to certificate security
+when trying to access web pages; these can look something like this:
+
+![cert-error](cert-error.png)
+
+As a general rule, if you see an error like this, you should click the "Go Back" button
+(or equivalent in other browsers); it usually means that there is something wrong with
+the encrypted connection, potentially leaving your traffic open to being stolen.
 
 ***Answer the questions below***
 
-***Correct answer:***
+Deploy the interactive content by clicking the green button at the top of the task.
 
-## Task 8
+***Correct answer: No answer needed***
 
-### Subheading
+The interactive content for this task demonstrates what can happen if information is sent
+over a potentially unsafe network with various types of encryption (or lack thereof).
+There is no flag for this task, but you are encouraged to try each of
+the different scenarios, mixing and matching the options provided in
+the control box at the bottom right of the screen.
+
+*Solution:*
+
+![pns-1](pns-1.png)
+![pns-2](pns-2.png)
+![pns-3](pns-3.png)
+![pns-4](pns-4.png)
+![pns-5](pns-5.png)
+
+***Correct answer: No answer needed***
+
+## Task 8: Backups
+
+### Overview
+
+Backups are arguably the single most important defensive measure you can take to protect
+your data. No matter what happens, if you have taken appropriate steps to
+back your information up, you will always be able to recover
+almost regardless of the severity of the damage.
+
+Whether the data in question is all-important business-critical data at work or the
+family photos at home, backups are a simple insurance measure that pays
+for itself many times over should the worst come to pass.
+
+Depending on the data in question, taking and restoring from backups could be as simple
+as dragging and dropping folders into Google Drive. That said, there are also many
+software solutions available to help automate backups
+and take the pain out of restoration.
+
+### The Golden 3,2,1 Rule
+
+The golden standard for taking backups is relatively simple
+and is often called the "3,2,1 rule".
+
+The 3,2,1 rule specifies that:
+
+You should always keep at least three up-to-date copies of your data;
+this can include the original copy, but all copies must be maintained.
+
+Backups should be stored on at least two different storage mediums; for example:
+a cloud backup and a USB device. This can include a hard drive on your PC.
+
+One (or more) backups should be stored "off-site".
+Cloud services such as Google Drive are ideal for personal use in this regard.
+
+Your backups should be safe if all three conditions of the 3,2,1 rule have been met; but
+of equal importance is the frequency at which you take backups. There's no point in
+keeping your backups stored securely if they are all a year old!
+
+How frequently you backup your data is up to you and usually depends on the sensitivity
+of the data, compared to the risk of compromise and the amount of backup space available.
+For example, a multi-billion pound corporation handling sensitive data is at high risk of
+a ransomware attack and may wish to take full backups two or three times a day. By
+comparison, a home user may only feel the need to take backups once or twice a week.
 
 ***Answer the questions below***
 
-***Correct answer:***
+What is the minimum number of up-to-date backups you should make?
 
-## Task 9
+***Correct answer: 3***
 
-### Subheading
+Of these, how many (at minimum) should be stored in another location?
+
+***Correct answer: 1***
+
+## Task 9: Updates and Patches
+
+### Software Updates
+
+Updates are an essential part of the software development lifecycle; they allow
+developers to add new features, fix bugs and otherwise simply alter aspects of the
+product. When vulnerabilities are discovered in software, the developers usually release
+special updates called patches that contain a fix for the
+vulnerability or otherwise "patch" the security issue.
+
+For this reason, it is imperative that you update software whenever possible — especially
+for things like operating systems (e.g. Windows or macOS) where vulnerabilities
+can be particularly dangerous, as seen in the case study below.
+
+#### Case Study: Eternal Blue (Click to read)
+
+Eternal Blue is believed to have been discovered by the United States National Security
+Agency (the NSA) and was leaked to the general public in April 2017. The vulnerability
+affects an integral part of the Windows operating system and gives a remote attacker
+complete control over the target at the highest level of privileges. You can see this for
+yourself in the ["Blue"](https://tryhackme.com/room/blue) room on TryHackMe.
+
+Microsoft quickly released a patch (the infamous
+[MS17-010](https://docs.microsoft.com/en-us/security-updates/SecurityBulletins/2017/ms17-010))
+which was designed to remove
+the vulnerable component in the software; however, many administrators simply chose not
+to download it for one reason or another.
+
+Why is this important? Eternal Blue was the transmission vector that the Wannacry
+ransomware (discussed in task 4) used to spread and infect new devices! Eternal Blue gave
+full access to a target remotely, making it a perfect vulnerability to exploit with a
+self-replicating virus. Despite a patch having been made available months before the
+appearance of Wannacry, the ransomware was still able to attack millions of unpatched
+systems, with devastating effects.
+
+You can read more about Eternal Blue
+[here](https://www.sentinelone.com/blog/eternalblue-nsa-developed-exploit-just-wont-die/).
+
+### Antivirus Updates
+
+Most antivirus software packages receive very frequent updates;
+this is because they largely work using a local database of
+known exploit signatures, which must be kept up-to-date.
+
+In other words: when new malware is discovered, it gets sent around antivirus vendors who
+generate a "signature" that identifies this particular piece of malicious software. These
+signatures are then distributed to every device on the planet that uses the antivirus
+software, ensuring that your installed antivirus solution is
+kept up-to-date on all the latest (known) malware.
+
+If antivirus software is not allowed to update it will still be able to catch some
+malware through other methods. However, the local signature database will quickly become
+outdated, resulting in malicious software potentially falling through the gaps.
+In short: if the antivirus wants to update, let it!
 
 ***Answer the questions below***
 
-***Correct answer:***
+(Optional) Complete the [Blue room](https://tryhackme.com/room/blue)
+on TryHackMe to see the brutal effects of the Eternal Blue
+exploit in action against an unpatched machine for yourself!
+
+***Correct answer: No answer needed***
 
 ## Task 10
 
-### Subheading
+To conclude: there are many different options for a malicious attacker to target both
+individuals and sweeping groups; however, there are remediations for every attack.
+
+Having completed this room, you should hopefully understand a little more about these
+common attacks and the defences against them. You don't need to be an expert in computers
+or cybersecurity to stay safe online: the solutions are simple and
+well-worth adopting in your personal and professional online interactions.
 
 ***Answer the questions below***
 
-***Correct answer:***
+I have completed the Common Attacks room!
+
+***Correct answer: No answer needed***
