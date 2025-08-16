@@ -294,42 +294,42 @@ Acquire the fundamental skills needed to enter any career in the industry.
 #### Common Attacks
 
 - [Link to site](https://tryhackme.com/r/room/)
-- [Solution](free-roadmap/.md)
+- [Solution](free-roadmap/03-common-attacks.md)
 
 #### What is Networking?
 
 - [Link to site](https://tryhackme.com/r/room/)
-- [Solution](free-roadmap/.md)
+- [Solution](free-roadmap/04-what-is-networking.md)
 
 #### Network Services
 
 - [Link to site](https://tryhackme.com/r/room/)
-- [Solution](free-roadmap/.md)
+- [Solution](free-roadmap/05-network-services.md)
 
 #### Network Services 2
 
 - [Link to site](https://tryhackme.com/r/room/)
-- [Solution](free-roadmap/.md)
+- [Solution](free-roadmap/06-network-services-2.md)
 
 #### HTTP in Detail
 
 - [Link to site](https://tryhackme.com/r/room/)
-- [Solution](free-roadmap/.md)
+- [Solution](free-roadmap/07-http-in-detail.md)
 
 #### DNS in Detail
 
 - [Link to site](https://tryhackme.com/r/room/)
-- [Solution](free-roadmap/.md)
+- [Solution](free-roadmap/08-dns-in-detail.md)
 
 #### How Websites Work
 
 - [Link to site](https://tryhackme.com/r/room/)
-- [Solution](free-roadmap/.md)
+- [Solution](free-roadmap/09-how-websites-work.md)
 
 #### Putting it all together
 
 - [Link to site](https://tryhackme.com/r/room/)
-- [Solution](free-roadmap/.md)
+- [Solution](free-roadmap/10-putting-it-all-together.md)
 
 ### ***Cyber Security Career Skills***
 
