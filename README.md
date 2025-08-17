@@ -396,3 +396,6 @@ Choose one of 3 paths:
 #### Intro to Pipeline Automation
 
 #### Active Directory Basics
+
+- [Link to site](https://tryhackme.com/room/winadbasics)
+- [Solution](free-roadmap/03-cyber-security-career-skills/security-engineer/07-active-directory-basics.md)
