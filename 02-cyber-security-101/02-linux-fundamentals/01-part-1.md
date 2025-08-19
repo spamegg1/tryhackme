@@ -577,8 +577,8 @@ I'll have a play around!
 
 ## Task 9: Linux Fundamentals Part 2
 
-Visit part two of the Linux fundamentals series
-[here!](https://tryhackme.com/room/linuxfundamentalspart2)
+Visit part two of the Linux fundamentals
+[series here!](https://tryhackme.com/room/linuxfundamentalspart2)
 
 ***Answer the questions below***
 

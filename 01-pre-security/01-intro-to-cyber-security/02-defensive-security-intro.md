@@ -1,4 +1,4 @@
-# Intro to Defensive Security
+# Defensive Security Intro
 
 Introducing defensive security and related topics, such as threat intelligence, SOC, DFIR, and SIEM.
 

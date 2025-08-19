@@ -63,8 +63,8 @@ Then arrived Windows 10,
 which is the current Windows operating system version for desktop computers.
 
 Windows 10 comes in 2 flavors, Home and Pro.
-You can read the difference between the Home and Pro
-[here](https://www.microsoft.com/en-us/windows/compare-windows-10-home-vs-pro).
+You can read the difference between the Home and
+[Pro here](https://www.microsoft.com/en-us/windows/compare-windows-10-home-vs-pro).
 
 Even though we didn't talk about servers,
 the current version of the Windows operating system for servers is Windows Server 2019.
@@ -75,15 +75,15 @@ to improve the usability and security with each new version of Windows.
 *Note:* The Windows edition for the attached VM is Windows Server 2019 Standard,
 as seen in *System Information.*
 
-*Update:* As of June 2021, Microsoft announced the retirement dates for Windows 10
-[here](https://learn.microsoft.com/en-us/lifecycle/products/windows-10-home-and-pro).
+*Update:* As of June 2021, Microsoft announced the retirement dates for Windows
+[10 here](https://learn.microsoft.com/en-us/lifecycle/products/windows-10-home-and-pro).
 
 "Microsoft will continue to support at least one
 Windows 10 Semi-Annual Channel until October 14, 2025".
 
 As of October 5th, 2021 - Windows 11 now is the current Windows
-operating system for end-users. Read more about Windows 11
-[here](https://www.microsoft.com/en-us/windows).
+operating system for end-users. Read more about Windows
+[11 here](https://www.microsoft.com/en-us/windows).
 
 ***Answer the questions below***
 
@@ -305,8 +305,8 @@ is installed on, typically the C drive (`C:\`).
 
 ![win-file-system](win-file-system.gif)
 
-You can read Microsoft's official documentation on FAT, HPFS, and NTFS
-[here](https://learn.microsoft.com/en-us/troubleshoot/windows-client/backup-and-storage/fat-hpfs-and-ntfs-file-systems).
+You can read Microsoft's official documentation on FAT, HPFS, and
+[NTFS here](https://learn.microsoft.com/en-us/troubleshoot/windows-client/backup-and-storage/fat-hpfs-and-ntfs-file-systems).
 
 Let's speak briefly on some features that are specific to NTFS.
 
@@ -402,8 +402,8 @@ critical for the operating system.
 
 You should proceed with extreme caution when interacting with this folder.
 Accidentally deleting any files or folders within `System32`
-can render the Windows OS inoperational. Read more about this action
-[here](https://www.howtogeek.com/346997/what-is-the-system32-directory-and-why-you-shouldnt-delete-it/).
+can render the Windows OS inoperational. Read more about this
+[action here](https://www.howtogeek.com/346997/what-is-the-system32-directory-and-why-you-shouldnt-delete-it/).
 
 **Note:** Many of the tools that will be covered in the Windows Fundamentals
 series reside within the `System32` folder.
@@ -580,8 +580,8 @@ After some time, if a password is not entered, the UAC prompt disappears,
 and the program does not install.
 
 This feature reduces the likelihood of malware successfully compromising your system.
-You can read more about UAC
-[here](https://learn.microsoft.com/en-us/windows/security/application-security/application-control/user-account-control/how-it-works).
+You can read more about
+[UAC here](https://learn.microsoft.com/en-us/windows/security/application-security/application-control/user-account-control/how-it-works).
 
 ***Answer the questions below***
 

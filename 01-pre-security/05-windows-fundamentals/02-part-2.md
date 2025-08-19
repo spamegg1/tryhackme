@@ -548,7 +548,7 @@ You can use the same command to view the help information for other useful
 `net` sub-commands, such as `localgroup`, `use`, `share`, and `session`.
 
 Refer to the following link to see a comprehensive list of commands
-you can execute in the command prompt [here](https://ss64.com/nt/).
+you can execute in the command [prompt here](https://ss64.com/nt/).
 
 ***Answer the questions below***
 
@@ -585,8 +585,8 @@ One way is to use the Registry Editor (`regedit`).
 
 ![regedit](regedit.png)
 
-Refer to the following Microsoft documentation
-[here](https://learn.microsoft.com/en-us/troubleshoot/windows-server/performance/windows-registry-advanced-users)
+Refer to the following Microsoft
+[documentation here](https://learn.microsoft.com/en-us/troubleshoot/windows-server/performance/windows-registry-advanced-users)
 to learn more about the Windows Registry.
 
 ***Answer the questions below***

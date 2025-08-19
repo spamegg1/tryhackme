@@ -54,8 +54,8 @@ for the next Patch Tuesday to be released.
 If the update is urgent, then Microsoft will push the update via
 the Windows Update service to the Windows devices.
 
-Refer to the following link to see the Microsoft Security Update Guide
-[here](https://msrc.microsoft.com/update-guide).
+Refer to the following link to see the Microsoft Security Update
+[Guide here](https://msrc.microsoft.com/update-guide).
 
 Windows Update is located in Settings. See below.
 
@@ -294,8 +294,8 @@ Per Microsoft, "Microsoft Defender SmartScreen protects against phishing or malw
 websites and applications, and the downloading of potentially malicious files".
 
 Refer to the official Microsoft document for more information on
-Microsoft Defender SmartScreen
-[here](https://docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-smartscreen/microsoft-defender-smartscreen-overview).
+Microsoft Defender
+[SmartScreen here](https://docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-smartscreen/microsoft-defender-smartscreen-overview).
 
 ![windows-app-control](windows-app-control.png)
 
@@ -378,8 +378,8 @@ in many newer computers by the computer manufacturers. It works with BitLocker t
 protect user data and to ensure that a computer has not been tampered with
 while the system was offline".
 
-Refer to the official Microsoft documentation to learn more about BitLocker
-[here](https://docs.microsoft.com/en-us/windows/security/information-protection/bitlocker/bitlocker-overview).
+Refer to the official Microsoft documentation to learn more about
+[BitLocker here](https://docs.microsoft.com/en-us/windows/security/information-protection/bitlocker/bitlocker-overview).
 
 **Note:** The BitLocker feature is not included in the attached VM.
 
@@ -451,7 +451,7 @@ Further reading material:
 
 **Note:** Attackers use built-in Windows tools and utilities in an attempt to go
 undetected within the victim environment.  This tactic is known as Living Off The Land.
-Refer to the following resource [here](https://lolbas-project.github.io/)
+Refer to the following [resource here](https://lolbas-project.github.io/)
 to learn more about this.
 
 ***Answer the questions below***
