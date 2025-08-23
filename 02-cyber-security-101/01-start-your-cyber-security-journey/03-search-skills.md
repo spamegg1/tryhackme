@@ -184,12 +184,12 @@ using a variety of attacks.
 
 What is the top country with `lighttpd` servers?
 
-***Correct answer: No answer needed***
+***Correct answer: United States***
 
 What does BitDefenderFalx detect the file with the hash
 `2de70ca737c1f4602517c555ddd54165432cf231ffc0e21fb2e23b9dd14e7fb4` as?
 
-***Correct answer: No answer needed***
+***Correct answer: Android.Riskware.Agent.LHH***
 
 ## Task 5: Vulnerabilities and Exploits
 
@@ -241,7 +241,7 @@ search results on GitHub that are related to the Heartbleed vulnerability.
 
 What utility does CVE-2024-3094 refer to?
 
-***Correct answer:***
+***Correct answer: xz***
 
 ## Task 6: Technical Documentation
 
@@ -302,12 +302,12 @@ the most up-to-date and offers the most complete product information.
 
 What does the Linux command `cat` stand for?
 
-***Correct answer:***
+***Correct answer: concatenate***
 
 What is the `netstat` parameter in MS Windows that displays the
 executable associated with each active connection and listening port?
 
-***Correct answer:***
+***Correct answer: -b***
 
 ## Task 7: Social Media
 
@@ -354,14 +354,14 @@ You are hired to evaluate the security of a particular company.
 What is a popular social media website you would use to learn
 about the technical background of one of their employees?
 
-***Correct answer:***
+***Correct answer: LinkedIn***
 
 Continuing with the previous scenario, you are trying to find the
 answer to the secret question, “Which school did you go to as a child?”.
 What social media website would you consider
 checking to find the answer to such secret questions?
 
-***Correct answer:***
+***Correct answer: Facebook***
 
 ## Task 8: Conclusion
 
