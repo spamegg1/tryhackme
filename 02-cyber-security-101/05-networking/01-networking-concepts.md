@@ -623,11 +623,37 @@ Connection closed by foreign host.
 Use `telnet` to connect to the web server on `MACHINE_IP`.
 What is the name and version of the HTTP server?
 
-***Correct answer:***
+*Solution:*
+
+```bash
+root@ip-10-10-142-239:~# export ip=10.10.133.103
+root@ip-10-10-142-239:~# telnet $ip 80
+Trying 10.10.133.103...
+Connected to 10.10.133.103.
+Escape character is '^]'. # this is where it stops. Now we provide input.
+GET / HTTP/1.1            # hit Enter here
+Host: telnet.thm          # hit Enter twice here!
+
+HTTP/1.1 200 OK
+Content-Type: text/html
+ETag: "2920831920"
+Last-Modified: Thu, 20 Jun 2024 12:39:38 GMT
+Content-Length: 20
+Accept-Ranges: bytes
+Date: Sat, 27 Sep 2025 07:48:42 GMT
+Server: lighttpd/1.4.63
+
+THM{TELNET_MASTER}
+
+Connection closed by foreign host.
+root@ip-10-10-142-239:~#
+```
+
+***Correct answer: lighttpd/1.4.63***
 
 What flag did you get when you viewed the page?
 
-***Correct answer:***
+***Correct answer: THM{TELNET_MASTER}***
 
 ## Task 8: Conclusion
 
