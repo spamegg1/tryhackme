@@ -183,7 +183,7 @@ You would come across many more historical ciphers in movies and cryptography bo
 Knowing that `XRPCTCRGNEI` was encrypted using Caesar Cipher,
 what is the original plaintext?
 
-***Correct answer:***
+***Correct answer: ICANENCRYPT***
 
 ## Task 5: Types of Encryption
 
@@ -355,15 +355,15 @@ the result of a%n will always be in the range 0 to n − 1.
 
 What’s 1001 ⊕ 1010?
 
-***Correct answer:***
+***Correct answer: 0011***
 
 What’s 118613842%9091?
 
-***Correct answer:***
+***Correct answer: 3565***
 
 What’s 60%12?
 
-***Correct answer:***
+***Correct answer: 0***
 
 ## Task 7: Summary
 
