@@ -2,3 +2,4 @@ books/
 data/
 vids/
 .vscode/
+*.ovpn
