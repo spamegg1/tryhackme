@@ -420,14 +420,6 @@ Learn how to perform basic SQL queries to retrieve and manage data in a database
 
 An introduction to using Burp Suite for web application pentesting.
 
-#### OWASP Top 10 - 2021
-
-Learn about and exploit each of the OWASP Top 10 vulnerabilities;
-the 10 most critical web security risks.
-
-- [Link to site](https://tryhackme.com/room/owasptop102021)
-- [Solution](02-cyber-security-101/08-web-hacking/05-owasp-top-10-2021.md)
-
 ### Offensive Security Tooling
 
 Explore three offensive tools; Hydra, Gobuster, and SQLMap are used
