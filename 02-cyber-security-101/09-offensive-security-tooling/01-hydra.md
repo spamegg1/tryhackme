@@ -60,7 +60,7 @@ The AttackBox machine will start in Split-Screen view. If it is not visible,
 use the blue Show Split View button at the top of the page.
 
 Press the green Start Machine button below to deploy the machine attached to this task,
-then navigate to http://MACHINE_IP on the AttackBox
+then navigate to <http://MACHINE_IP> on the AttackBox
 (this machine can take up to 3 minutes to boot)
 
 ### Hydra Commands
